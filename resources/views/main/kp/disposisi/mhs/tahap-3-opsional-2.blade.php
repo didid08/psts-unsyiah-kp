@@ -1,7 +1,7 @@
 <table width="100%" class="table table-bordered table-striped{{ ($disposisi->progress_optional < 6 && $disposisi->progress >= 26) ? '' : formBackgroundOptional(4, 5, $disposisi) }}">
 	<tbody>
 		<tr>
-			<td class="align-middle">3.</td>
+			<td class="align-middle">4.</td>
 			<td class="align-middle"><b>Surat Tugas Pengambilan Data Lab/Lapangan</b></td>
 			<td class="align-middle text-center">
 			@if ($disposisi->progress_optional > 5)

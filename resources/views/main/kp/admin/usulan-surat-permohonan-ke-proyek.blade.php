@@ -2,7 +2,7 @@
 
 @section('custom-script')
 	<script>
-		$("#pengesahan-seminar-proposal").dataTable();
+		$("#usulan-surat-permohonan-ke-proyek").dataTable();
 	</script>
 @endsection
 
@@ -10,14 +10,13 @@
 	<div class="container">
 		<div class="card">
 			<div class="card-body" style="overflow-x: auto;">
-				<table class="table table-bordered table-striped" id="pengesahan-seminar-proposal">
+				<table class="table table-bordered table-striped" id="usulan-surat-permohonan-ke-proyek">
 					<thead>
 						<tr class="bg-green">
 							<th scope="col" class="align-middle text-center">No</th>
 							<th scope="col" class="align-middle text-left">Nama</th>
 							<th scope="col" class="align-middle text-center">NIM</th>
-							<th scope="col" class="align-middle text-center">Berita Acara Seminar Proposal</th>
-							<th scope="col" class="align-middle text-center">Buku Proposal</th>
+							<th scope="col" class="align-middle text-center">Surat Permohonan Ke Proyek</th>
 							<th scope="col" class="align-middle text-center">Opsi 1</th>
 							<th scope="col" class="align-middle text-center">Opsi 2</th>
 						</tr>
@@ -33,25 +32,20 @@
 								$mhsId = $mahasiswa->user_id;
 							@endphp
 							<tr>
-								<form action="{{ route('main.kp.koor-prodi.pengesahan-sempro.process', ['nim' => $mahasiswa->user->nomor_induk, 'opsi' => 'accept']) }}" method="post" style="display: inline;">
+								<form action="{{ route('main.kp.admin.usulan-surat-permohonan-ke-proyek.process', ['nim' => $mahasiswa->user->nomor_induk, 'opsi' => 'accept']) }}" method="post" style="display: inline;" enctype="multipart/form-data">
 									<td class="align-middle text-center">{{ $index+1 }}</td>
 									<td class="align-middle text-left">{{ $mahasiswa->user->nama }}</td>
 									<td class="align-middle text-center">{{ $mahasiswa->user->nomor_induk }}</td>
 									<td class="align-middle text-center">
-										
-										<a target="_blank" href="{{ route('main.file', ['filename' => $berita_acara_seminar_proposal->$mhsId->content]) }}" class="text-green">Periksa</a>
-									</td>
-									<td class="align-middle text-center">
-										
-										<a target="_blank" href="{{ route('main.file', ['filename' => $buku_proposal->$mhsId->content]) }}" class="text-green">Periksa</a>
+										<a target="_blank" href="{{ route('main.file', ['filename' => $surat_permohonan_ke_proyek->$mhsId->content]) }}" class="text-green">Periksa</a>
 									</td>
 									<td class="align-middle text-center">
 										@csrf
-										<button type="submit" class="btn btn-sm btn-success">Terima</button>
+										<button type="submit" class="btn btn-sm btn-success">Proses</button>
 									</td>
 								</form>
 								<td class="align-middle text-center">
-									<form action="{{ route('main.kp.koor-prodi.pengesahan-sempro.process', ['nim' => $mahasiswa->user->nomor_induk, 'opsi' => 'decline']) }}" method="post" style="display: inline;">
+									<form action="{{ route('main.kp.admin.usulan-surat-permohonan-ke-proyek.process', ['nim' => $mahasiswa->user->nomor_induk, 'opsi' => 'decline']) }}" method="post" style="display: inline;" enctype="multipart/form-data">
 										@csrf
 										<button type="submit" class="btn btn-sm btn-danger">Tolak</button>
 									</form>
@@ -63,7 +57,6 @@
 								<tr>
 									<td class="align-middle text-center">--</td>
 									<td class="align-middle text-left">--</td>
-									<td class="align-middle text-center">--</td>
 									<td class="align-middle text-center">--</td>
 									<td class="align-middle text-center">--</td>
 									<td class="align-middle text-center">--</td>

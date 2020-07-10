@@ -60,12 +60,27 @@ Route::middleware(['auth'])->group(function () {
 		Route::middleware('only.admin')->group(function () {
 			Route::get('/main/kp/admin/usulan-kp', 'Main\KP\Admin\UsulanKPController@view')->name('main.kp.admin.usulan-kp');
 			Route::post('/main/kp/admin/usulan-kp/process/{nim}/{opsi}', 'Main\KP\Admin\UsulanKPController@process')->name('main.kp.admin.usulan-kp.process');
+
+			Route::get('/main/kp/admin/usulan-surat-permohonan-ke-proyek', 'Main\KP\Admin\UsulanSuratPermohonanKeProyekController@view')->name('main.kp.admin.usulan-surat-permohonan-ke-proyek');
+			Route::post('/main/kp/admin/usulan-surat-permohonan-ke-proyek/process/{nim}/{opsi}', 'Main\KP\Admin\UsulanSuratPermohonanKeProyekController@process')->name('main.kp.admin.usulan-surat-permohonan-ke-proyek.process');
+
+			Route::get('/main/kp/admin/usulan-surat-ke-proyek', 'Main\KP\Admin\UsulanSuratKeProyekController@view')->name('main.kp.admin.usulan-surat-ke-proyek');
+			Route::post('/main/kp/admin/usulan-surat-ke-proyek/process/{nim}', 'Main\KP\Admin\UsulanSuratKeProyekController@process')->name('main.kp.admin.usulan-surat-ke-proyek.process');
+
+			Route::get('/main/kp/admin/usulan-sk-pembimbing-pembahas', 'Main\KP\Admin\UsulanSKPembimbingPembahasController@view')->name('main.kp.admin.usulan-sk-pembimbing-pembahas');
+			Route::post('/main/kp/admin/usulan-sk-pembimbing-pembahas/process/{nim}', 'Main\KP\Admin\UsulanSKPembimbingPembahasController@process')->name('main.kp.admin.usulan-sk-pembimbing-pembahas.process');
 		});
 
 		//Koor Prodi
 		Route::middleware('only.koor-prodi')->group(function () {
 			Route::get('/main/kp/koor-prodi/persetujuan-usulan-kp', 'Main\KP\KoorProdi\PersetujuanUsulanKPController@view')->name('main.kp.koor-prodi.persetujuan-usulan-kp');
 			Route::post('/main/kp/koor-prodi/persetujuan-usulan-kp/process/{nim}/{opsi}', 'Main\KP\KoorProdi\PersetujuanUsulanKPController@process')->name('main.kp.koor-prodi.persetujuan-usulan-kp.process');
+
+			Route::get('/main/kp/koor-prodi/penetapan-surat-ke-proyek', 'Main\KP\KoorProdi\PenetapanSuratKeProyekController@view')->name('main.kp.koor-prodi.penetapan-surat-ke-proyek');
+			Route::post('/main/kp/koor-prodi/penetapan-surat-ke-proyek/process/{nim}/{opsi}', 'Main\KP\KoorProdi\PenetapanSuratKeProyekController@process')->name('main.kp.koor-prodi.penetapan-surat-ke-proyek.process');
+
+			Route::get('/main/kp/koor-prodi/penetapan-sk-pembimbing-pembahas', 'Main\KP\KoorProdi\PenetapanSKPembimbingPembahasController@view')->name('main.kp.koor-prodi.penetapan-sk-pembimbing-pembahas');
+			Route::post('/main/kp/koor-prodi/penetapan-sk-pembimbing-pembahas/process/{nim}/{opsi}', 'Main\KP\KoorProdi\PenetapanSKPembimbingPembahasController@process')->name('main.kp.koor-prodi.penetapan-sk-pembimbing-pembahas.process');
 		});
 
 		//Ketua Kel Keahlian

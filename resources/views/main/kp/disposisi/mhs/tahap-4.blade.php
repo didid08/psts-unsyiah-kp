@@ -1,4 +1,4 @@
-<table width="100%" class="table table-bordered{{ formBackground(12, 12, $disposisi) }}">
+<table width="100%" class="table table-bordered{{ formBackground(13, 13, $disposisi) }}">
 	<tbody>
 		<tr>
 			<td colspan="3" class="align-middle"><b>Pemeriksaan Pembimbing & Pembahas terhadap mahasiswa</b></td>

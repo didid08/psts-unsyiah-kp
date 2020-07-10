@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Main\TGA\Admin;
+namespace App\Http\Controllers\Main\KP\Admin;
 
 use App\Http\Controllers\Main\MainController;
 use Illuminate\Support\Facades\Validator;
@@ -10,20 +10,20 @@ use App\User;
 use App\UserRole;
 use App\Disposisi;
 use App\Data;
+use App\Setting;
 
-class UsulanPengesahanSeminarProposalController extends MainController
+class UsulanSuratPermohonanKeProyekController extends MainController
 {
     public function view()
     {
     	$data = new Data();
 
-    	return $this->customView('tga.admin.usulan-pengesahan-seminar-proposal', [
-            'nav_item_active' => 'tga',
-            'subtitle' => 'Usulan Pengesahan Seminar Proposal',
+    	return $this->customView('kp.admin.usulan-surat-permohonan-ke-proyek', [
+            'nav_item_active' => 'kp',
+            'subtitle' => 'Usulan Surat Permohonan Ke Proyek',
 
-            'semua_mahasiswa' => Disposisi::where('progress', 16)->orderBy('updated_at')->get(),
-            'berita_acara_seminar_proposal' => $data->getDataMultiple('berita-acara-seminar-proposal'),
-            'buku_proposal' => $data->getDataMultiple('buku-proposal')
+            'semua_mahasiswa' => Disposisi::where('progress', 6)->orderBy('updated_at')->get(),
+            'surat_permohonan_ke_proyek' => $data->getDataMultiple('surat-permohonan-ke-proyek')
         ]);
     }
 
@@ -40,21 +40,25 @@ class UsulanPengesahanSeminarProposalController extends MainController
     	{
     		case 'decline':
     			$disposisi->update([
-	                'progress' => 15
+	                'progress' => 5
 	            ]);
 	            return redirect()->back()->with('error', 'Usulan telah ditolak');
     		break;
 
     		case 'accept':
 
-	            $disposisi->update([
-                    'progress' => 17
+                Data::where(['user_id' => $user->first()->id, 'name' => 'surat-permohonan-ke-proyek'])->update([
+                    'verified' => true
                 ]);
 
-                return redirect()->back()->with('success', 'Usulan telah dikirim ke Koor Prodi');
+	            $disposisi->update([
+                    'progress' => 7
+                ]);
+
+                return redirect()->back()->with('success', 'Usulan telah diterima');
     		break;
     		default:
     			return abort(404);
-    	}	
+    	}
     }
 }

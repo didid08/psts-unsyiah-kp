@@ -1,4 +1,4 @@
-<table width="100%" class="table table-bordered{{ formBackground(18, 18, $disposisi) }}">
+<table width="100%" class="table table-bordered{{ formBackground(19, 19, $disposisi) }}">
 	<tbody>
 		<tr>
 			<td colspan="3" class="align-middle"><b>Dosen pembimbing dan pembahas telah menerima dokumen KP mahasiswa</b></td>

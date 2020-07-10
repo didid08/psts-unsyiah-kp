@@ -28,8 +28,8 @@
 				@if (in_array($disposisi->progress, range(4,4)))
 					<span class="text-warning">sedang diproses</span>
 				@elseif ($disposisi->progress > 4)
-					@if (isset($data->co_pembimbing))
-						@if ($data->co_pembimbing->verified == true)
+					@if (isset($data->pembahas))
+						@if ($data->pembahas->verified == true)
 							<input type="text" class="form-control bg-light" readonly="readonly" value="{{ $data->pembahas->content }}">
 						@else
 							<span class="text-warning">sedang diubah</span>

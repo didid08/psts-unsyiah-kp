@@ -1,4 +1,4 @@
-<table width="100%" class="table table-bordered{{ formBackground(16, 16, $disposisi) }}">
+<table width="100%" class="table table-bordered{{ formBackground(17, 17, $disposisi) }}">
 	<tbody>
 		<tr>
 			<td colspan="2" class="align-middle"><b>Laporan KP</b></td>
@@ -9,9 +9,9 @@
 		<tr>
 			<td class="align-middle">Catatan KP</td>
 			<td class="align-middle text-center">
-				@if (in_array($disposisi->progress, range(16,16)))
+				@if (in_array($disposisi->progress, range(17,17)))
 					<span class="text-yellow">Sedang diproses</span>
-				@elseif ($disposisi->progress > 16)
+				@elseif ($disposisi->progress > 17)
 					<input type="text" class="form-control bg-light" disabled="disabled" value="..">
 				@else
 					--
@@ -21,9 +21,9 @@
 		<tr>
 			<td class="align-middle">Nilai KP</td>
 			<td class="align-middle text-center">
-				@if (in_array($disposisi->progress, range(16,16)))
+				@if (in_array($disposisi->progress, range(17,17)))
 					<span class="text-yellow">Sedang diproses</span>
-				@elseif ($disposisi->progress > 16)
+				@elseif ($disposisi->progress > 17)
 					<input type="text" class="form-control bg-light" disabled="disabled" value="..">
 				@else
 					--

@@ -2,7 +2,7 @@
 
 @section('custom-script')
 	<script>
-		$("#usulan-pengesahan-sidang").dataTable();
+		$("#usulan-surat-ke-proyek").dataTable();
 	</script>
 @endsection
 
@@ -10,16 +10,14 @@
 	<div class="container">
 		<div class="card">
 			<div class="card-body" style="overflow-x: auto;">
-				<table class="table table-bordered table-striped" id="usulan-pengesahan-sidang">
+				<table class="table table-bordered table-striped" id="usulan-surat-ke-proyek">
 					<thead>
 						<tr class="bg-green">
 							<th scope="col" class="align-middle text-center">No</th>
 							<th scope="col" class="align-middle text-left">Nama</th>
 							<th scope="col" class="align-middle text-center">NIM</th>
-							<th scope="col" class="align-middle text-center">Berita Acara Sidang Buku</th>
-							<th scope="col" class="align-middle text-center">Buku TGA</th>
-							<th scope="col" class="align-middle text-center">Opsi 1</th>
-							<th scope="col" class="align-middle text-center">Opsi 2</th>
+							<th scope="col" class="align-middle text-center">Surat Ke Proyek</th>
+							<th scope="col" class="align-middle text-center">Opsi</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -33,29 +31,18 @@
 								$mhsId = $mahasiswa->user_id;
 							@endphp
 							<tr>
-								<form action="{{ route('main.kp.admin.usulan-pengesahan-sidang.process', ['nim' => $mahasiswa->user->nomor_induk, 'opsi' => 'accept']) }}" method="post" style="display: inline;">
+								<form action="{{ route('main.kp.admin.usulan-surat-ke-proyek.process', ['nim' => $mahasiswa->user->nomor_induk]) }}" method="post" style="display: inline;" enctype="multipart/form-data">
 									<td class="align-middle text-center">{{ $index+1 }}</td>
 									<td class="align-middle text-left">{{ $mahasiswa->user->nama }}</td>
 									<td class="align-middle text-center">{{ $mahasiswa->user->nomor_induk }}</td>
 									<td class="align-middle text-center">
-										
-										<a target="_blank" href="{{ route('main.file', ['filename' => $berita_acara_sidang_buku->$mhsId->content]) }}" class="text-green">Periksa</a>
-									</td>
-									<td class="align-middle text-center">
-										
-										<a target="_blank" href="{{ route('main.file', ['filename' => $buku_tga->$mhsId->content]) }}" class="text-green">Periksa</a>
+										<input type="file" name="surat-ke-proyek" accept="application/pdf">
 									</td>
 									<td class="align-middle text-center">
 										@csrf
 										<button type="submit" class="btn btn-sm btn-success">Kirim ke Koor Prodi</button>
 									</td>
 								</form>
-								<td class="align-middle text-center">
-									<form action="{{ route('main.kp.admin.usulan-pengesahan-sidang.process', ['nim' => $mahasiswa->user->nomor_induk, 'opsi' => 'decline']) }}" method="post" style="display: inline;">
-										@csrf
-										<button type="submit" class="btn btn-sm btn-danger">Tolak</button>
-									</form>
-								</td>
 							</tr>
 							@endforeach
 
@@ -63,8 +50,6 @@
 								<tr>
 									<td class="align-middle text-center">--</td>
 									<td class="align-middle text-left">--</td>
-									<td class="align-middle text-center">--</td>
-									<td class="align-middle text-center">--</td>
 									<td class="align-middle text-center">--</td>
 									<td class="align-middle text-center">--</td>
 									<td class="align-middle text-center">--</td>
