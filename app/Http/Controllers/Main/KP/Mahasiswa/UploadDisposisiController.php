@@ -93,6 +93,42 @@ class UploadDisposisiController extends Controller
                 ]);
 
                 return redirect()->back()->with('success', 'Berhasil mengunggah surat permohonan ke proyek');
+            } elseif ($progress == 11) {
+                $validate_rules = [
+                    'surat-balasan-dari-proyek' => 'required|file|mimes:pdf|max:5120'
+                ];
+                $validate_errors = [
+                    'surat-balasan-dari-proyek.required' => 'Harap unggah Surat Balasan Dari Proyek',
+                    'surat-balasan-dari-proyek.mimes' => 'Harap unggah dalam format pdf',
+                    'surat-balasan-dari-proyek.max' => 'Ukuran Surat Balasan Dari Proyek melebihi 5 MB'
+                ];
+
+                $validator = Validator::make($request->all(), $validate_rules, $validate_errors);
+                if ($validator->fails()) {
+                    return redirect()->back()->withErrors($validator);
+                }
+
+                $filename = User::myData('nomor_induk').'-surat-balasan-dari-proyek.'.$request->file('surat-balasan-dari-proyek')->extension();
+
+                $request->file('surat-balasan-dari-proyek')->storeAs(
+                    'data', $filename
+                );
+
+                Data::updateOrCreate([
+                    'user_id' => User::myData('id'),
+                    'category' => 'data_usul',
+                    'type' => 'file',
+                    'name' => 'surat-balasan-dari-proyek',
+                    'display_name' => 'Surat Balasan Dari Proyek'
+                ], [
+                    'content' => $filename
+                ]);
+
+                $disposisi->update([
+                    'progress' => 12
+                ]);
+
+                return redirect()->back()->with('success', 'Berhasil mengunggah Surat Balasan Dari Proyek');
             } elseif ($progress == 33) {
                 $data = new Data;
                 if (!$data->checkMultipleData(User::myData('id'), ['biodata', 'transkrip', 'bukti-bebas-lab', 'artikel-jim'])) {

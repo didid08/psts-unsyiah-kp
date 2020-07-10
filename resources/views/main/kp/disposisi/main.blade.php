@@ -217,7 +217,7 @@
 								<td class="text-center align-middle"></td>
 							</tr>
 
-							@if ($disposisi->progress >= 26 &&  $disposisi->progress_optional < 6)
+							@if ($disposisi->progress >= 16 &&  $disposisi->progress_optional < 6)
 								{{-- Tahap 3 (opsional) [Inactive] --}}
 								<tr>
 									<td></td>

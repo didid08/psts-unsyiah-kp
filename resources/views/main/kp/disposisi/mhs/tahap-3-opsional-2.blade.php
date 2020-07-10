@@ -1,4 +1,4 @@
-<table width="100%" class="table table-bordered table-striped{{ ($disposisi->progress_optional < 6 && $disposisi->progress >= 26) ? '' : formBackgroundOptional(4, 5, $disposisi) }}">
+<table width="100%" class="table table-bordered table-striped{{ ($disposisi->progress_optional < 6 && $disposisi->progress >= 16) ? '' : formBackgroundOptional(4, 5, $disposisi) }}">
 	<tbody>
 		<tr>
 			<td class="align-middle">4.</td>
@@ -17,7 +17,7 @@
 					<span class="text-muted">--</span>
 				@elseif ($disposisi->progress_optional > 5)
 					<input type="text" class="form-control bg-light" readonly="readonly" value="{{ $data->stpd->no }}">	
-				@elseif ($disposisi->progress_optional < 6 && $disposisi->progress >= 26)
+				@elseif ($disposisi->progress_optional < 6 && $disposisi->progress >= 16)
 					<span class="text-muted">--</span>
 				@else
 					<span class="text-warning">sedang diproses</span>
@@ -32,7 +32,7 @@
 					<span class="text-muted">--</span>
 				@elseif ($disposisi->progress_optional > 5)
 					<input type="text" class="form-control bg-light" readonly="readonly" value="{{ date('d-m-Y', strtotime($data->stpd->tgl)) }}">	
-				@elseif ($disposisi->progress_optional < 6 && $disposisi->progress >= 26)
+				@elseif ($disposisi->progress_optional < 6 && $disposisi->progress >= 16)
 					<span class="text-muted">--</span>
 				@else
 					<span class="text-warning">sedang diproses</span>

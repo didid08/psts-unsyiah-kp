@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Main\TGA\KoorProdi;
+namespace App\Http\Controllers\Main\KP\KoorProdi;
 
 use App\Http\Controllers\Main\MainController;
 use Illuminate\Support\Facades\Validator;
@@ -18,11 +18,11 @@ class PersetujuanSuratTugasPengambilanDataController extends MainController
     {
     	$data = new Data();
 
-    	return $this->customView('tga.koor-prodi.persetujuan-surat-tugas-pengambilan-data', [
-            'nav_item_active' => 'tga',
+    	return $this->customView('kp.koor-prodi.persetujuan-surat-tugas-pengambilan-data', [
+            'nav_item_active' => 'kp',
             'subtitle' => 'Persetujuan Surat Tugas Pengambilan Data',
 
-            'semua_mahasiswa' => Disposisi::where('progress_optional', 5)->where('progress', '<', 26)->orderBy('updated_at')->get(),
+            'semua_mahasiswa' => Disposisi::where('progress_optional', 5)->where('progress', '<', 16)->orderBy('updated_at')->get(),
             'stpd' => $data->getDataMultiple('stpd')
         ]);
     }
@@ -51,7 +51,7 @@ class PersetujuanSuratTugasPengambilanDataController extends MainController
 
                 if (Data::where(['user_id' => $user->first()->id, 'name' => 'stpd'])->first()->no == null) {
                     Data::where(['user_id' => $user->first()->id, 'name' => 'stpd'])->update([
-                        'no' => $noStpd.'/TA/II/'.date('Y'),
+                        'no' => 'B/'.$noStpd.'/UN11.1.4/1/KM/'.date('Y'),
                         'tgl' => date('Y m d')
                     ]);
                 }
@@ -64,7 +64,7 @@ class PersetujuanSuratTugasPengambilanDataController extends MainController
                     'progress_optional' => 6
                 ]);
 
-                return redirect()->back()->with('success', 'Surat Tugas Pengambilan Data telah disetujui');
+                return redirect()->back()->with('success', 'Surat Tugas Pengambilan Data telah ditetapkan');
     		break;
     		default:
     			return abort(404);

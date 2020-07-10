@@ -69,6 +69,15 @@ Route::middleware(['auth'])->group(function () {
 
 			Route::get('/main/kp/admin/usulan-sk-pembimbing-pembahas', 'Main\KP\Admin\UsulanSKPembimbingPembahasController@view')->name('main.kp.admin.usulan-sk-pembimbing-pembahas');
 			Route::post('/main/kp/admin/usulan-sk-pembimbing-pembahas/process/{nim}', 'Main\KP\Admin\UsulanSKPembimbingPembahasController@process')->name('main.kp.admin.usulan-sk-pembimbing-pembahas.process');
+			
+			Route::get('/main/kp/admin/usulan-surat-balasan-dari-proyek', 'Main\KP\Admin\UsulanSuratBalasanDariProyekController@view')->name('main.kp.admin.usulan-surat-balasan-dari-proyek');
+			Route::post('/main/kp/admin/usulan-surat-balasan-dari-proyek/process/{nim}/{opsi}', 'Main\KP\Admin\UsulanSuratBalasanDariProyekController@process')->name('main.kp.admin.usulan-surat-balasan-dari-proyek.process');
+
+			Route::get('/main/kp/admin/usulan-surat-permohonan-tugas-pengambilan-data', 'Main\KP\Admin\UsulanSuratPermohonanTugasPengambilanDataController@view')->name('main.kp.admin.usulan-sptpd');
+			Route::post('/main/kp/admin/usulan-surat-permohonan-tugas-pengambilan-data/process/{nim}/{opsi}', 'Main\KP\Admin\UsulanSuratPermohonanTugasPengambilanDataController@process')->name('main.kp.admin.usulan-sptpd.process');
+
+			Route::get('/main/kp/admin/usulan-surat-tugas-pengambilan-data', 'Main\KP\Admin\UsulanSuratTugasPengambilanDataController@view')->name('main.kp.admin.usulan-stpd');
+			Route::post('/main/kp/admin/usulan-surat-tugas-pengambilan-data/process/{nim}', 'Main\KP\Admin\UsulanSuratTugasPengambilanDataController@process')->name('main.kp.admin.usulan-stpd.process');
 		});
 
 		//Koor Prodi
@@ -81,6 +90,9 @@ Route::middleware(['auth'])->group(function () {
 
 			Route::get('/main/kp/koor-prodi/penetapan-sk-pembimbing-pembahas', 'Main\KP\KoorProdi\PenetapanSKPembimbingPembahasController@view')->name('main.kp.koor-prodi.penetapan-sk-pembimbing-pembahas');
 			Route::post('/main/kp/koor-prodi/penetapan-sk-pembimbing-pembahas/process/{nim}/{opsi}', 'Main\KP\KoorProdi\PenetapanSKPembimbingPembahasController@process')->name('main.kp.koor-prodi.penetapan-sk-pembimbing-pembahas.process');
+
+			Route::get('/main/kp/koor-prodi/persetujuan-stpd', 'Main\KP\KoorProdi\PersetujuanSuratTugasPengambilanDataController@view')->name('main.kp.koor-prodi.persetujuan-stpd');
+			Route::post('/main/kp/koor-prodi/persetujuan-stpd/process/{nim}/{opsi}', 'Main\KP\KoorProdi\PersetujuanSuratTugasPengambilanDataController@process')->name('main.kp.koor-prodi.persetujuan-stpd.process');
 		});
 
 		//Ketua Kel Keahlian

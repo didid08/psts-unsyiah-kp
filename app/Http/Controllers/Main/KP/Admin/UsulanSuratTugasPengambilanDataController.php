@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Main\TGA\Admin;
+namespace App\Http\Controllers\Main\KP\Admin;
 
 use App\Http\Controllers\Main\MainController;
 use Illuminate\Support\Facades\Validator;
@@ -18,11 +18,11 @@ class UsulanSuratTugasPengambilanDataController extends MainController
     {
     	$data = new Data();
 
-    	return $this->customView('tga.admin.usulan-surat-tugas-pengambilan-data', [
-            'nav_item_active' => 'tga',
+    	return $this->customView('kp.admin.usulan-surat-tugas-pengambilan-data', [
+            'nav_item_active' => 'kp',
             'subtitle' => 'Usulan Surat Tugas Pengambilan Data',
 
-            'semua_mahasiswa' => Disposisi::where('progress_optional', 4)->where('progress', '<', 26)->orderBy('updated_at')->get(),
+            'semua_mahasiswa' => Disposisi::where('progress_optional', 4)->where('progress', '<', 16)->orderBy('updated_at')->get(),
             'sptpd' => $data->getDataMultiple('sptpd')
         ]);
     }

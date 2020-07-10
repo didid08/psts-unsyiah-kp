@@ -66,16 +66,17 @@
                     <li><a href="{{ route('main.kp.admin.usulan-surat-permohonan-ke-proyek') }}" class="dropdown-item">2. Usulan Surat Permohonan Ke Proyek</a></li>
                     <li><a href="{{ route('main.kp.admin.usulan-surat-ke-proyek') }}" class="dropdown-item">3. Usulan Surat Ke Proyek</a></li>
                     <li><a href="{{ route('main.kp.admin.usulan-sk-pembimbing-pembahas') }}" class="dropdown-item">4. Usulan SK Pembimbing/Pembahas</a></li>
-                    <li><a href="" class="dropdown-item">5. Usulan Surat Permohonan Tugas Pengambilan Data</a></li>
-                    <li><a href="" class="dropdown-item">6. Usulan Surat Tugas Pengambilan Data</a></li>
-                    <li><a href="" class="dropdown-item">7. Usulan Pengisian Masa KP</a></li>
-                    <li><a href="" class="dropdown-item">8. Usulan Kelengkapan Dokumen Administrasi</a></li>
+                    <li><a href="{{ route('main.kp.admin.usulan-surat-balasan-dari-proyek') }}" class="dropdown-item">5. Usulan Surat Balasan Dari Proyek</a></li>
+                    <li><a href="{{ route('main.kp.admin.usulan-sptpd') }}" class="dropdown-item">6. Usulan Surat Permohonan Tugas Pengambilan Data</a></li>
+                    <li><a href="{{ route('main.kp.admin.usulan-stpd') }}" class="dropdown-item">7. Usulan Surat Tugas Pengambilan Data</a></li>
+                    <li><a href="" class="dropdown-item">8. Usulan Pengisian Masa KP</a></li>
+                    <li><a href="" class="dropdown-item">9. Usulan Kelengkapan Dokumen Administrasi</a></li>
                   @endif
                   @if (isset($role->koor_prodi))
                     <li><a href="{{ route('main.kp.koor-prodi.persetujuan-usulan-kp') }}" class="dropdown-item">1. Persetujuan Usulan KP</a></li>
                     <li><a href="{{ route('main.kp.koor-prodi.penetapan-surat-ke-proyek') }}" class="dropdown-item">2. Penetapan Surat Ke Proyek</a></li>
                     <li><a href="{{ route('main.kp.koor-prodi.penetapan-sk-pembimbing-pembahas') }}" class="dropdown-item">3. Penetapan SK Pembimbing/Pembahas</a></li>
-                    <li><a href="" class="dropdown-item">4. Penetapan Surat Tugas Pengambilan Data</a></li>
+                    <li><a href="{{ route('main.kp.koor-prodi.persetujuan-stpd') }}" class="dropdown-item">4. Persetujuan Surat Tugas Pengambilan Data</a></li>
                     <li><a href="" class="dropdown-item">5. Pengisian Rekap Nilai KP</a></li>
                     <li><a href="" class="dropdown-item">6. Persetujuan Usulan Kelengkapan Dokumen Administrasi</a></li>
                   @endif
