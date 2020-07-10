@@ -97,7 +97,7 @@ class UsersTableSeeder extends Seeder
 				}else if ($index == 1) {
 					$data_dosen['nomor_induk'] = str_replace(' ', '', $data);
 				}else if ($index == 2) {
-					$data_dosen['email'] = 'Ramadhantymirna@gmail.com';
+					$data_dosen['email'] = 'didid.wizard@gmail.com';
 				}
 				/* str_replace('[at]', '@', $data) */
 			}
@@ -1221,40 +1221,34 @@ class UsersTableSeeder extends Seeder
     	DB::table('users')->insert([
     		'category' => 'pejabat',
     		'nomor_induk' => '2',
-    		'nama' => 'Koordinator TGA',
-    		'password' => Hash::make('2')
-    	]);
-    	DB::table('users')->insert([
-    		'category' => 'pejabat',
-    		'nomor_induk' => '3',
     		'nama' => 'Ketua Bidang Manajemen Rekayasa Konstruksi',
     		'bidang_id' => 1,
     		'password' => Hash::make('3')
     	]);
     	DB::table('users')->insert([
     		'category' => 'pejabat',
-    		'nomor_induk' => '4',
+    		'nomor_induk' => '3',
     		'nama' => 'Ketua Bidang Hidroteknik',
     		'bidang_id' => 2,
     		'password' => Hash::make('4')
     	]);
     	DB::table('users')->insert([
     		'category' => 'pejabat',
-    		'nomor_induk' => '5',
+    		'nomor_induk' => '4',
     		'nama' => 'Ketua Bidang Transportasi',
     		'bidang_id' => 3,
     		'password' => Hash::make('5')
     	]);
     	DB::table('users')->insert([
     		'category' => 'pejabat',
-    		'nomor_induk' => '6',
+    		'nomor_induk' => '5',
     		'nama' => 'Ketua Bidang Geoteknik',
     		'bidang_id' => 4,
     		'password' => Hash::make('6')
     	]);
     	DB::table('users')->insert([
     		'category' => 'pejabat',
-    		'nomor_induk' => '7',
+    		'nomor_induk' => '6',
     		'nama' => 'Ketua Bidang Struktur',
     		'bidang_id' => 5,
     		'password' => Hash::make('7')

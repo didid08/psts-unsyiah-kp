@@ -1,34 +1,47 @@
-<table width="100%" class="table table-bordered{{ formBackground(15, 17, $disposisi) }}">
+<table width="100%" class="table table-bordered{{ formBackground(17, 17, $disposisi) }}">
 	<tbody>
 		<tr>
-			<td class="align-middle">1.</td>
-			<td class="align-middle">Berita Acara Seminar Proposal</td>
-			<td class="text-center align-middle">
-				@if ($disposisi->progress == 15)
-					<span><i class="fa fa-times-circle text-secondary"></i>&nbsp;&nbsp;Belum diunggah</span>
-				@elseif ($disposisi->progress == 16)
-					<span class="text-yellow">Sedang diperiksa oleh Admin</span>
-				@elseif ($disposisi->progress == 17)
-					<span class="text-yellow">Sedang diperiksa oleh Koordinator Prodi</span>
-				@elseif ($disposisi->progress > 17)
-					<span><i class="fa fa-check-circle text-success"></i>&nbsp;&nbsp;Ada</span>
+			<td colspan="3" class="align-middle"><b>Rekap Nilai KP</b></td>
+		</tr>
+		<tr>
+			<td class="align-middle text-center">1.</td>
+			<td class="align-middle">Nilai Pembimbing</td>
+			<td class="align-middle text-center">
+				@if ($disposisi->progress >= 17)
+					<input type="text" class="form-control bg-light" readonly="readonly" value="--">
 				@else
 					--
 				@endif
 			</td>
 		</tr>
 		<tr>
-			<td class="align-middle">2.</td>
-			<td class="align-middle">Buku Proposal</td>
-			<td class="text-center align-middle">
-				@if ($disposisi->progress == 15)
-					<span><i class="fa fa-times-circle text-secondary"></i>&nbsp;&nbsp;Belum diunggah</span>
-				@elseif ($disposisi->progress == 16)
-					<span class="text-yellow">Sedang diperiksa oleh Admin</span>
-				@elseif ($disposisi->progress == 17)
-					<span class="text-yellow">Sedang diperiksa oleh Koordinator Prodi</span>
-				@elseif ($disposisi->progress > 17)
-					<span><i class="fa fa-check-circle text-success"></i>&nbsp;&nbsp;Ada</span>
+			<td class="align-middle text-center">2.</td>
+			<td class="align-middle">Nilai Pembahas</td>
+			<td class="align-middle text-center">
+				@if ($disposisi->progress >= 17)
+					<input type="text" class="form-control bg-light" readonly="readonly" value="--">
+				@else
+					--
+				@endif
+			</td>
+		</tr>
+		<tr>
+			<td class="align-middle text-center">3.</td>
+			<td class="align-middle">Rekap Nilai KP</td>
+			<td class="align-middle text-center">
+				@if ($disposisi->progress > 17)
+					<input type="text" class="form-control bg-light" readonly="readonly" value="--">
+				@else
+					--
+				@endif
+			</td>
+		</tr>
+		<tr>
+			<td class="align-middle text-center">4.</td>
+			<td class="align-middle">Buku Laporan KP dan Lembar Pengesahan KP</td>
+			<td class="align-middle text-center">
+				@if ($disposisi->progress >= 17)
+					<i class="fa fa-check-circle text-green"></i><span class="ml-3">Ada</span>
 				@else
 					--
 				@endif

@@ -1,4 +1,4 @@
-<table width="100%" class="table table-bordered{{ formBackground(17, 18, $disposisi) }}">
+<table width="100%" class="table table-bordered{{ formBackground(17, 17, $disposisi) }}">
 	<tbody>
 		<tr>
 			<td colspan="3" class="align-middle"><b>Rekap Nilai KP</b></td>
@@ -29,7 +29,7 @@
 			<td class="align-middle text-center">3.</td>
 			<td class="align-middle">Rekap Nilai KP</td>
 			<td class="align-middle text-center">
-				@if ($disposisi->progress > 21)
+				@if ($disposisi->progress > 17)
 					<input type="text" class="form-control bg-light" readonly="readonly" value="--">
 				@else
 					--

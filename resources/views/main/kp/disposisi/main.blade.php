@@ -348,17 +348,15 @@
 							</tr>
 							
 							{{-- Tahap 8 --}}
-							<tr class="{{ background(17, 18, $disposisi) }}">
+							<tr class="{{ background(17, 17, $disposisi) }}">
 								<td><b>8</b></td>
 								<td colspan="4">
 									@include('main.kp.disposisi.'.$folder.'.tahap-8')
 								</td>
 								<td class="text-center align-middle"></td>
+								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle">
 									{!! progress(17, $disposisi) !!}
-								</td>
-								<td class="text-center align-middle">
-									{!! progress(18, $disposisi) !!}
 								</td>
 								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>
@@ -366,39 +364,39 @@
 							</tr>
 
 							{{-- Tahap 9 --}}
-							<tr class="{{ background(23, 23, $disposisi) }}">
+							<tr class="{{ background(18, 18, $disposisi) }}">
 								<td><b>9</b></td>
 								<td colspan="4">
-									
+									@include('main.kp.disposisi.'.$folder.'.tahap-9')
 								</td>
 								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle">
-									{!! progress(23, $disposisi) !!}
+									{!! progress(18, $disposisi) !!}
 								</td>
 								<td class="text-center align-middle"></td>
 							</tr>
 
 							{{-- Tahap 10 --}}
-							<tr class="{{ background(24, 26, $disposisi) }}">
+							<tr class="{{ background(19, 21, $disposisi) }}">
 								<td><b>10</b></td>
 								<td colspan="4">
-									
+									@include('main.kp.disposisi.'.$folder.'.tahap-10')
 								</td>
 								<td class="text-center align-middle">
-									{!! progress(24, $disposisi) !!}
+									{!! progress(19, $disposisi) !!}
 								</td>
 								<td class="text-center align-middle">
-									{!! progress(25, $disposisi) !!}
+									{!! progress(20, $disposisi) !!}
+								</td>
+								<td class="text-center align-middle">
+									{!! progress(21, $disposisi) !!}
 								</td>
 								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>
-								<td class="text-center align-middle">
-									{!! progress(26, $disposisi) !!}
-								</td>
 							</tr>
 						</tbody>
 					</table>

@@ -1,32 +1,43 @@
-<table width="100%" class="table table-bordered{{ formBackground(20, 20, $disposisi) }}">
+<table width="100%" class="table table-bordered{{ formBackground(19, 21, $disposisi) }}">
 	<tbody>
 		<tr>
+			<td class="align-middle text-center">1.</td>
+			<td class="align-middle">Kelengkapan dokumen administrasi (Dokumen: PSTS 2)</td>
+			<td class="align-middle text-center">
+				@if ($disposisi->progress == 19)
+					@csrf
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" name="kelengkapan-dokumen-administrasi" id="kelengkapan-dokumen-administrasi" onchange="showSelectedFile('#kelengkapan-dokumen-administrasi-label', event)" accept="application/zip">
+						<label class="custom-file-label text-left" for="kelengkapan-dokumen-administrasi" id="kelengkapan-dokumen-administrasi-label">Pilih File</label>
+					</div>
+					<button type="submit" class="btn btn-sm btn-success mt-2">Kirim</button>
+				@elseif (in_array($disposisi->progress, range(20,21)))
+					<span class="text-warning">sedang diperiksa</span>
+				@elseif ($disposisi->progress > 21)
+					<i class="fa fa-check-circle text-green"></i><span class="ml-3">Ada</span>
+				@else
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" name="kelengkapan-dokumen-administrasi" id="kelengkapan-dokumen-administrasi" onchange="showSelectedFile('#kelengkapan-dokumen-administrasi-label', event)" accept="application/zip" disabled="disabled">
+						<label class="custom-file-label text-left" for="kelengkapan-dokumen-administrasi" id="kelengkapan-dokumen-administrasi-label">Pilih File</label>
+					</div>
+					<button class="btn btn-sm btn-secondary mt-2 disabled">Kirim</button>
+				@endif
+			</td>
+		</tr>
+		<tr>
+			<td class="align-middle text-center">2.</td>
+			<td colspan="2" class="align-middle">Softcopy dokumen administrasi dikirim ke</td>
+		</tr>
+		<tr>
+			<td></td>
 			<td colspan="2" class="align-middle">
-				Pembimbing (Co) telah menerima SK
+				Nama file : NIM_KP.zip
 			</td>
 		</tr>
 		<tr>
-			<td class="align-middle font-italic">Jumlah Asistensi (min. 8 kali)</td>
-			<td class="text-center align-middle">
-				@if (in_array($disposisi->progress, range(20,20)))
-					<span class="text-yellow">Sedang diproses</span>
-				@elseif ($disposisi->progress > 20)
-					<input type="text" class="form-control bg-light" readonly="readonly" style="display: inline-block; width: 7em;" value="{{ $data->jumlah_asistensi_2->content }} kali">
-				@else
-					--
-				@endif
-			</td>
-		</tr>
-		<tr>
-			<td class="align-middle font-italic">Masa Pembimbingan Buku TGA</td>
-			<td class="text-center align-middle">
-				@if (in_array($disposisi->progress, range(20,20)))
-					<span class="text-yellow">Sedang diproses</span>
-				@elseif ($disposisi->progress > 20)
-					<input type="text" class="form-control bg-light" readonly="readonly" style="display: inline-block; width: 7em;" value="{{ $data->masa_pembimbingan_buku_tga->content }} bulan">
-				@else
-					--
-				@endif
+			<td></td>
+			<td colspan="2" class="align-middle">
+				Email Administrasi : jtspsts{!! '@' !!}gmail.com
 			</td>
 		</tr>
 	</tbody>

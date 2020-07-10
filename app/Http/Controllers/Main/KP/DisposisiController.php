@@ -33,8 +33,7 @@ class DisposisiController extends MainController
                     'role' => $role,
                     'mahasiswa' => User::where('id', $id)->first(),
                     'disposisi' => Disposisi::where('user_id', $id)->first(),
-                    'data' => $data->listData($id),
-                    'cek_berkas_yudisium' => $data->checkMultipleData($id, ['biodata', 'transkrip', 'bukti-bebas-lab', 'artikel-jim'])
+                    'data' => $data->listData($id)
                 ]);
             }
             return abort(404);
@@ -82,10 +81,7 @@ class DisposisiController extends MainController
                     'mahasiswa' => User::firstWhere('nomor_induk', $nim),
                     'roles' => $my_roles,
                     'disposisi' => Disposisi::where('user_id', $mhs_id)->first(),
-                    'data' => $data->listData($mhs_id),
-                    'semua_dosen' => User::dataWithCategory('dosen'),
-                    'semua_dosen_bimbingan' => json_decode(json_encode($semua_dosen_bimbingan)),
-                    'semua_dosen_co_bimbingan' => json_decode(json_encode($semua_dosen_co_bimbingan))
+                    'data' => $data->listData($mhs_id)
                 ];
 
             } else {

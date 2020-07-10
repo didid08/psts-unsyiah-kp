@@ -2,7 +2,7 @@
 
 @section('custom-script')
 	<script>
-		$("#persetujuan-usulan-tga").dataTable();
+		$("#usulan-kp").dataTable();
 	</script>
 @endsection
 
@@ -10,7 +10,7 @@
 	<div class="container">
 		<div class="card">
 			<div class="card-body" style="overflow-x: auto;">
-				<table class="table table-bordered table-striped" id="persetujuan-usulan-tga">
+				<table class="table table-bordered table-striped" id="usulan-kp">
 					<thead>
 						<tr class="bg-green">
 							<th scope="col" class="align-middle text-center">No</th>
@@ -20,7 +20,6 @@
 							<th scope="col" class="align-middle text-center">SPP</th>
 							<th scope="col" class="align-middle text-center">KRS</th>
 							<th scope="col" class="align-middle text-center">Transkrip</th>
-							<th scope="col" class="align-middle text-center">KHS</th>
 							<th scope="col" colspan="2" class="align-middle text-center">Opsi</th>
 						</tr>
 					</thead>
@@ -52,20 +51,16 @@
 								</td>
 								<td class="align-middle text-center">
 									
-									<a target="_blank" href="{{ route('main.file', ['filename' => $khs->$mhsId->content]) }}" class="text-green">Periksa</a>
-								</td>
-								<td class="align-middle text-center">
-									
 									<a target="_blank" href="{{ route('main.file', ['filename' => $transkrip_sementara->$mhsId->content]) }}" class="text-green">Periksa</a>
 								</td>
 								<td class="align-middle text-center">
-									<form action="{{ route('main.kp.koor-prodi.persetujuan-usulan-tga.process', ['nim' => $mahasiswa->user->nomor_induk, 'opsi' => 'accept']) }}" method="post" style="display: inline;">
+									<form action="{{ route('main.kp.admin.usulan-kp.process', ['nim' => $mahasiswa->user->nomor_induk, 'opsi' => 'accept']) }}" method="post" style="display: inline;">
 										@csrf
-										<button type="submit" class="btn btn-sm btn-success">Terima</button>
+										<button type="submit" class="btn btn-sm btn-success">Kirim ke Koor Prodi</button>
 									</form>
 								</td>
 								<td class="align-middle text-center">
-									<form action="{{ route('main.kp.koor-prodi.persetujuan-usulan-tga.process', ['nim' => $mahasiswa->user->nomor_induk, 'opsi' => 'decline']) }}" method="post" style="display: inline;">
+									<form action="{{ route('main.kp.admin.usulan-kp.process', ['nim' => $mahasiswa->user->nomor_induk, 'opsi' => 'decline']) }}" method="post" style="display: inline;">
 										@csrf
 										<button type="submit" class="btn btn-sm btn-danger">Tolak</button>
 									</form>
@@ -77,7 +72,6 @@
 								<tr>
 									<td class="align-middle text-center">--</td>
 									<td class="align-middle text-left">--</td>
-									<td class="align-middle text-center">--</td>
 									<td class="align-middle text-center">--</td>
 									<td class="align-middle text-center">--</td>
 									<td class="align-middle text-center">--</td>

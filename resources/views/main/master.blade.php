@@ -59,42 +59,38 @@
                   <li><a href="{{ route('main.kp.disposisi') }}" class="dropdown-item">Disposisi</a></li>
                   @if (isset($role->mhs))
                     <li><a href="{{ route('main.kp.mahasiswa.input-usul') }}" class="dropdown-item">Input Usul KP</a></li>
-                    <li><a href="{{ route('main.kp.mahasiswa.input-usul-yudisium') }}" class="dropdown-item">Input Usul Yudisium</a></li>
+                    
                   @endif
                   @if (isset($role->admin))
-                    <li><a href="{{ route('main.kp.admin.usulan-tga') }}" class="dropdown-item">1. Usulan TGA</a></li>
-                    <li><a href="{{ route('main.kp.admin.usulan-sk-pembimbing') }}" class="dropdown-item">2. Usulan SK Pembimbing</a></li>
-                    <li><a href="{{ route('main.kp.admin.usulan-sptpd') }}" class="dropdown-item">3. Usulan Surat Permohonan Tugas Pengambilan Data</a></li>
-                    <li><a href="{{ route('main.kp.admin.usulan-stpd') }}" class="dropdown-item">4. Usulan Surat Tugas Pengambilan Data</a></li>
-                    <li><a href="{{ route('main.kp.admin.usulan-sempro') }}" class="dropdown-item">5. Usulan Seminar Proposal</a></li>
-                    <li><a href="{{ route('main.kp.admin.usulan-sk-penguji-sempro') }}" class="dropdown-item">6. Usulan SK Penguji Seminar Proposal</a></li>
-                    <li><a href="{{ route('main.kp.admin.usulan-pengesahan-sempro') }}" class="dropdown-item">7. Usulan Pengesahan Seminar Proposal</a></li>
-                    <li><a href="{{ route('main.kp.admin.usulan-daftar-hadir-sempro') }}" class="dropdown-item">8. Usulan Kelengkapan Dokumen Administrasi Seminar Proposal</a></li>
-                    <li><a href="{{ route('main.kp.admin.usulan-sidang') }}" class="dropdown-item">9. Usulan Sidang</a></li>
-                    <li><a href="{{ route('main.kp.admin.usulan-sk-penguji-sidang') }}" class="dropdown-item">10. Usulan SK Penguji Sidang</a></li>
-                    <li><a href="{{ route('main.kp.admin.usulan-pengesahan-sidang') }}" class="dropdown-item">11. Usulan Pengesahan Sidang</a></li>
-                    <li><a href="{{ route('main.kp.admin.usulan-yudisium') }}" class="dropdown-item">12. Usulan Yudisium</a></li>
+                    <li><a href="{{ route('main.kp.admin.usulan-kp') }}" class="dropdown-item">1. Usulan KP</a></li>
+                    <li><a href="" class="dropdown-item">2. Usulan Surat Permohonan Ke Proyek</a></li>
+                    <li><a href="" class="dropdown-item">3. Usulan Surat Ke Proyek</a></li>
+                    <li><a href="" class="dropdown-item">4. Usulan SK Pembimbing/Pembahas</a></li>
+                    <li><a href="" class="dropdown-item">5. Usulan Surat Permohonan Tugas Pengambilan Data</a></li>
+                    <li><a href="" class="dropdown-item">6. Usulan Surat Tugas Pengambilan Data</a></li>
+                    <li><a href="" class="dropdown-item">7. Usulan Pengisian Masa KP</a></li>
+                    <li><a href="" class="dropdown-item">8. Usulan Kelengkapan Dokumen Administrasi</a></li>
                   @endif
                   @if (isset($role->koor_prodi))
-                    <li><a href="{{ route('main.kp.koor-prodi.persetujuan-usulan-tga') }}" class="dropdown-item">1. Persetujuan Usulan TGA</a></li>
-                    <li><a href="{{ route('main.kp.koor-prodi.penetapan-sk-pembimbing') }}" class="dropdown-item">2. Penetapan SK Pembimbing</a></li>
-                    <li><a href="{{ route('main.kp.koor-prodi.persetujuan-stpd') }}" class="dropdown-item">3. Persetujuan Surat Tugas Pengambilan Data</a></li>
-                    <li><a href="{{ route('main.kp.koor-prodi.penetapan-sk-penguji-sempro') }}" class="dropdown-item">4. Penetapan SK Penguji Seminar Proposal</a></li>
-                    <li><a href="{{ route('main.kp.koor-prodi.pengesahan-sempro') }}" class="dropdown-item">5. Pengesahan Seminar Proposal</a></li>
-                    <li><a href="{{ route('main.kp.koor-prodi.penetapan-sk-penguji-sidang') }}" class="dropdown-item">6. Penetapan SK Penguji Sidang</a></li>
-                    <li><a href="{{ route('main.kp.koor-prodi.pengesahan-sidang') }}" class="dropdown-item">7. Pengesahan Sidang</a></li>
-                    <li><a href="{{ route('main.kp.koor-prodi.pengesahan-usulan-yudisium') }}" class="dropdown-item">8. Pengesahan Usulan Yudisium</a></li>
-                  @endif
-                  @if (isset($role->pembahas))
-                    <li><a href="{{ route('main.kp.koor-tga.usulan-sempro') }}" class="dropdown-item">1. Usulan Seminar Proposal</a></li>
-                    <li><a href="{{ route('main.kp.koor-tga.usulan-sidang') }}" class="dropdown-item">2. Usulan Sidang</a></li>
-                  @endif
-                  @if (isset($role->ketua_kel_keahlian))
-                    <li><a href="{{ route('main.kp.ketua-kel-keahlian.pengusulan-pembimbing') }}" class="dropdown-item">1. Pengusulan Pembimbing dan Co</a></li>
-                    <li><a href="{{ route('main.kp.ketua-kel-keahlian.pengubahan-pembimbing') }}" class="dropdown-item">2. Pengubahan Pembimbing dan Co</a></li>
+                    <li><a href="{{ route('main.kp.koor-prodi.persetujuan-usulan-kp') }}" class="dropdown-item">1. Persetujuan Usulan KP</a></li>
+                    <li><a href="" class="dropdown-item">2. Persetujuan Usulan Surat Permohonan Ke Proyek</a></li>
+                    <li><a href="" class="dropdown-item">3. Penetapan Surat Ke Proyek</a></li>
+                    <li><a href="" class="dropdown-item">4. Penetapan SK Pembimbing/Pembahas</a></li>
+                    <li><a href="" class="dropdown-item">5. Penetapan Surat Tugas Pengambilan Data</a></li>
+                    <li><a href="" class="dropdown-item">6. Pengisian Rekap Nilai KP</a></li>
+                    <li><a href="" class="dropdown-item">8. Persetujuan Usulan Kelengkapan Dokumen Administrasi</a></li>
                   @endif
                   @if (isset($role->pembimbing))
-                    <li><a href="{{ route('main.kp.pembimbing-co.persetujuan-seminar-dan-sidang') }}" class="dropdown-item">1. Persetujuan Seminar dan Sidang</a></li>
+                    <li><a href="" class="dropdown-item">1. Pemeriksaan Berkas KP</a></li>
+                    <li><a href="" class="dropdown-item">2. Penilaian KP</a></li>
+                    <li><a href="" class="dropdown-item">3. Pemeriksaan Kelengkapan Dokumen KP</a></li>
+                  @endif
+                  @if (isset($role->pembahas))
+                    <li><a href="" class="dropdown-item">1. Penilaian KP</a></li>
+                  @endif
+                  @if (isset($role->ketua_kel_keahlian))
+                    <li><a href="{{ route('main.kp.ketua-kel-keahlian.pengusulan-pembimbing-pembahas') }}" class="dropdown-item">1. Pengusulan Pembimbing dan Pembahas</a></li>
+                    {{--<li><a href="{{ route('main.kp.ketua-kel-keahlian.pengubahan-pembimbing') }}" class="dropdown-item">2. Pengubahan Pembimbing dan Co</a></li>--}}
                   @endif
                 </ul>
               </li>

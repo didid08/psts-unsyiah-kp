@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Main\TGA\KetuaKelKeahlian;
+namespace App\Http\Controllers\Main\KP\KetuaKelKeahlian;
 
 use App\Http\Controllers\Main\MainController;
 use Illuminate\Http\Request;
@@ -11,28 +11,14 @@ use App\Data;
 use App\Disposisi;
 use App\User;
 use App\Mail\UsulPembimbing;
-use App\Mail\UsulCoPembimbing;
+use App\Mail\UsulPembahas;
 
-class PengusulanPembimbingController extends MainController
+class PengusulanPembimbingPembahasController extends MainController
 {
     public function view()
     {
     	$data = new Data();
     	$user = new User();
-
-    	$dosen_pembimbing = [];
-    	$dosen_co_pembimbing = [];
-
-    	foreach (User::where('category', 'dosen')->get() as $dosen) {
-    		if ($user->calculateBimbingan('total')[$dosen->nama] < 10) {
-    			$dosen_pembimbing[$dosen->nomor_induk] = $dosen->nama;
-    		}
-    	}
-    	foreach (User::where('category', 'dosen')->get() as $dosen) {
-    		if ($user->calculateCoBimbingan('total')[$dosen->nama] < 10) {
-    			$dosen_co_pembimbing[$dosen->nomor_induk] = $dosen->nama;
-    		}
-    	}
 
     	$pembimbing_array = json_decode(json_encode($data->getDataMultiple('pembimbing')), true);
     	foreach($pembimbing_array as $index => $value) {
@@ -41,27 +27,27 @@ class PengusulanPembimbingController extends MainController
     	        $hariLewat = floor($diff / (60 * 60 * 24));
     	        if ($hariLewat >= 2) {
     	            Data::where(['user_id' => $value['user_id'], 'name' => 'pembimbing'])->delete();
-    	            Data::where(['user_id' => $value['user_id'], 'name' => 'co-pembimbing'])->delete();
+    	            Data::where(['user_id' => $value['user_id'], 'name' => 'pembahas'])->delete();
     	        }
             }
     	}
-    	$co_pembimbing_array = json_decode(json_encode($data->getDataMultiple('co-pembimbing')), true);
-    	foreach($co_pembimbing_array as $index => $value) {
+    	$pembahas_array = json_decode(json_encode($data->getDataMultiple('pembahas')), true);
+    	foreach($pembahas_array as $index => $value) {
             if ($value['verified'] == false) {
         		$diff2 = time() - strtotime($value['updated_at']);
     	        $hariLewat2 = floor($diff2 / (60 * 60 * 24));
     	        if ($hariLewat2 >= 2) {
     	            Data::where(['user_id' => $value['user_id'], 'name' => 'pembimbing'])->delete();
-    	            Data::where(['user_id' => $value['user_id'], 'name' => 'co-pembimbing'])->delete();
+    	            Data::where(['user_id' => $value['user_id'], 'name' => 'pembahas'])->delete();
     	        }
             }
     	}
         
         $myBidang = User::find(User::myData('id'))->bidang()->value('nama');
 
-    	return $this->customView('tga.ketua-kel-keahlian.pengusulan-pembimbing', [
-            'nav_item_active' => 'tga',
-            'subtitle' => 'Pengusulan Pembimbing dan Co',
+    	return $this->customView('kp.ketua-kel-keahlian.pengusulan-pembimbing-pembahas', [
+            'nav_item_active' => 'kp',
+            'subtitle' => 'Pengusulan Pembimbing dan Pembahas',
 
             'semua_mahasiswa' => Data::where(['name' => 'bidang', 'content' => $myBidang])
             						->join('disposisi', 'data.user_id', '=', 'disposisi.user_id')
@@ -69,11 +55,10 @@ class PengusulanPembimbingController extends MainController
             						->where('progress', 4)
             						->orderBy('updated_at')
             						->get(),
+            'semua_dosen' => User::where('category', 'dosen')->get(),
             'daftar_pembimbing' => $data->getDataMultiple('pembimbing'),
-            'daftar_co_pembimbing' => $data->getDataMultiple('co-pembimbing'),
-            'judul_tga' => $data->getDataMultiple('judul-tga'),
-            'dosen_pembimbing' => $dosen_pembimbing,
-            'dosen_co_pembimbing' => $dosen_co_pembimbing
+            'daftar_pembahas' => $data->getDataMultiple('pembahas'),
+            'judul_kp' => $data->getDataMultiple('judul-kp')
         ]);
     }
 
@@ -81,10 +66,10 @@ class PengusulanPembimbingController extends MainController
     {
     	$validator = Validator::make($request->all(), [
     		'pembimbing' => 'required',
-    		'co-pembimbing' => 'required'
+    		'pembahas' => 'required'
     	], [
     		'pembimbing.required' => 'Harap pilih nama pembimbing',
-    		'co-pembimbing.required' => 'Harap pilih nama co pembimbing'
+    		'pembahas.required' => 'Harap pilih nama pembahas'
     	]);
 
         if ($validator->fails()) {
@@ -92,22 +77,18 @@ class PengusulanPembimbingController extends MainController
         }
 
     	$nomorIndukPembimbing = $request->input('pembimbing');
-    	$nomorIndukCoPembimbing = $request->input('co-pembimbing');
-
-    	if ($nomorIndukPembimbing == 'empty' | $nomorIndukCoPembimbing == 'empty') {
-    		return redirect()->back()->with('error', 'Harap pilih nama pembimbing beserta co pembimbing');
-    	}
+    	$nomorIndukPembahas = $request->input('pembahas');
 
     	$mahasiswa = User::where('nomor_induk', $nim)->first();
     	$pembimbing = User::where('nomor_induk', $nomorIndukPembimbing)->first();
-    	$coPembimbing = User::where('nomor_induk', $nomorIndukCoPembimbing)->first();
+    	$pembahas = User::where('nomor_induk', $nomorIndukPembahas)->first();
 
     	if ($pembimbing->email == null) {
     		return redirect()->back()->with('error', 'Pembimbing tidak memiliki email yang dapat dikirim');
     	}
 
-    	if ($coPembimbing->email == null) {
-    		return redirect()->back()->with('error', 'Co Pembimbing tidak memiliki email yang dapat dikirim');
+    	if ($pembahas->email == null) {
+    		return redirect()->back()->with('error', 'Pembahas tidak memiliki email yang dapat dikirim');
     	}
 
     	$key1 = uniqid(rand());
@@ -129,18 +110,18 @@ class PengusulanPembimbingController extends MainController
     		'user_id' => $mahasiswa->id,
     		'category' => 'data_usul',
     		'type' => 'text',
-    		'name' => 'co-pembimbing',
-    		'display_name' => 'Nama Co Pembimbing'
+    		'name' => 'pembahas',
+    		'display_name' => 'Nama Pembahas'
     	], [
-    		'content' => $coPembimbing->nama,
+    		'content' => $pembahas->nama,
     		'verified' => false,
     		'verification_key' => Hash::make($key2)
     	]);
 
     	Mail::to($pembimbing->email)->send(new UsulPembimbing($mahasiswa->nama, $mahasiswa->nomor_induk, $key1));
-    	Mail::to($coPembimbing->email)->send(new UsulCoPembimbing($mahasiswa->nama, $mahasiswa->nomor_induk, $key2));
+    	Mail::to($pembahas->email)->send(new UsulPembahas($mahasiswa->nama, $mahasiswa->nomor_induk, $key2));
 
-    	return redirect()->back()->with('success', 'Berhasil mengusulkan Pembimbing dan Co Pembimbing untuk '.$mahasiswa->nama.' ('.$nim.')');
+    	return redirect()->back()->with('success', 'Berhasil mengusulkan Pembimbing dan Pembahas untuk '.$mahasiswa->nama.' ('.$nim.')');
     }
 
     public function process($nim, Request $request)
@@ -156,6 +137,6 @@ class PengusulanPembimbingController extends MainController
             'progress' => 5
         ]);
 
-        return redirect()->back()->with('success', 'Pembimbing telah ditetapkan');
+        return redirect()->back()->with('success', 'Pembimbing dan Pembahas telah ditetapkan');
     }
 }

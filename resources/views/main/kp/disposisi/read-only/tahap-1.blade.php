@@ -1,6 +1,11 @@
 <table width="100%" class="table table-bordered{{ formBackground(1, 3, $disposisi) }}">
 	<tbody>
 		<tr>
+			<td colspan="3" class="align-middle text-left">
+				<a href="{{ route('main.kp.mahasiswa.input-usul') }}" class="btn btn-light">Input Usul KP</a>
+			</td>
+		</tr>
+		<tr>
 			<td class="align-middle text-center">1.</td>
 			<td class="align-middle">SPP</td>
 			<td class="text-center align-middle">

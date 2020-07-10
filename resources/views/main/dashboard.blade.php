@@ -130,7 +130,7 @@
                                 <th class="align-middle text-center">No</th>
                                 <th class="align-middle">Nama</th>
                                 <th class="align-middle text-center">NIM</th>
-                                <th class="align-middle">Nomor Urutan di Menu TGA</th>
+                                <th class="align-middle">Nomor Urutan di Menu KP</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Main\TGA\KoorProdi;
+namespace App\Http\Controllers\Main\KP\KoorProdi;
 
 use App\Http\Controllers\Main\MainController;
 use Illuminate\Support\Facades\Validator;
@@ -12,20 +12,19 @@ use App\Disposisi;
 use App\Data;
 use App\Setting;
 
-class PersetujuanUsulanTGAController extends MainController
+class PersetujuanUsulanKPController extends MainController
 {
     public function view()
     {
     	$data = new Data();
 
-    	return $this->customView('tga.koor-prodi.persetujuan-usulan-tga', [
-            'nav_item_active' => 'tga',
-            'subtitle' => 'Persetujuan Usulan TGA',
+    	return $this->customView('kp.koor-prodi.persetujuan-usulan-kp', [
+            'nav_item_active' => 'kp',
+            'subtitle' => 'Persetujuan Usulan KP',
 
             'semua_mahasiswa' => Disposisi::where('progress', 3)->orderBy('updated_at')->get(),
             'spp' => $data->getDataMultiple('spp'),
             'krs' => $data->getDataMultiple('krs'),
-            'khs' => $data->getDataMultiple('khs'),
             'transkrip_sementara' => $data->getDataMultiple('transkrip-sementara'),
             'foto' => $data->getDataMultiple('foto')
         ]);
@@ -61,7 +60,7 @@ class PersetujuanUsulanTGAController extends MainController
                     $no = $jumlahYgAdaNomor+1;
 
                     Disposisi::where('user_id', $user->first()->id)->update([
-                        'no_disposisi' => $no.'/TA/II/'.date('Y'),
+                        'no_disposisi' => $no.'/KP/I/'.date('Y'),
                         'tgl_disposisi' => date('Y m d')
                     ]);
                 }

@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class UbahCoPembimbing extends Mailable
+class UsulPembahas extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -35,8 +35,8 @@ class UbahCoPembimbing extends Mailable
     public function build()
     {
         return $this->from('psts.unsyiah@gmail.com')
-                   ->subject('Pengusulan Pengubahan Co Pembimbing')
-                   ->view('email.ubah-co-pembimbing')
+                   ->subject('Pengusulan Pembahas')
+                   ->view('email.usul-pembahas')
                    ->with(
                     [
                         'nama' => $this->nama,

@@ -1,122 +1,94 @@
-<table width="100%" class="table table-bordered{{ formBackground(8, 10, $disposisi) }}">
+<table width="100%" class="table table-bordered{{ formBackground(13, 14, $disposisi) }}">
 	<tbody>
 		<tr>
 			<td class="align-middle">1.</td>
-			<td class="align-middle">Lembar Asistensi (Setuju Diseminarkan)</td>
+			<td class="align-middle">Masa Kerja Praktek</td>
 			<td class="text-center align-middle">
-				@if ($disposisi->progress > 8)
-					<i class="fa fa-check-circle text-green"></i><span class="ml-3">Ada</span>
-				@elseif ($disposisi->progress < 8)
-					<i class="fa fa-exclamation-triangle text-muted"></i><span class="ml-3 text-muted">Belum ada</span>
+				@if ($disposisi->progress == 13)
+					<input type="text" class="form-control" name="masa-kerja-praktek">
+				@elseif (in_array($disposisi->progress, range(14,14)))
+					<span class="text-yellow">Sedang diperiksa</span>
+				@elseif ($disposisi->progress > 14)
+					<input type="text" class="form-control bg-light" disabled="disabled" value="..">
 				@else
-					<i class="fa fa-exclamation-triangle text-yellow"></i><span class="ml-3">Belum ada</span>
+					<input type="text" class="form-control" disabled="disabled">
 				@endif
 			</td>
 		</tr>
 		<tr>
 			<td class="align-middle">2.</td>
-			<td class="align-middle">Draft Buku Proposal</td>
+			<td class="align-middle">Surat keterangan telah selesai KP dari penanggung jawab KP</td>
 			<td class="text-center align-middle">
-				@if ($disposisi->progress > 8)
+				@if ($disposisi->progress == 13)
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" name="surat-keterangan-telah-selesai-kp" id="surat-keterangan-telah-selesai-kp" onchange="showSelectedFile('#surat-keterangan-telah-selesai-kp-label', event)" accept="application/pdf">
+						<label class="custom-file-label text-left" for="surat-keterangan-telah-selesai-kp" id="surat-keterangan-telah-selesai-kp-label">Pilih File</label>
+					</div>
+				@elseif (in_array($disposisi->progress, range(14,14)))
+					<span class="text-yellow">Sedang diperiksa</span>
+				@elseif ($disposisi->progress > 14)
 					<i class="fa fa-check-circle text-green"></i><span class="ml-3">Ada</span>
-				@elseif ($disposisi->progress < 8)
-					<i class="fa fa-exclamation-triangle text-muted"></i><span class="ml-3 text-muted">Belum ada</span>
 				@else
-					<i class="fa fa-exclamation-triangle text-yellow"></i><span class="ml-3">Belum ada</span>
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" name="surat-keterangan-telah-selesai-kp" id="surat-keterangan-telah-selesai-kp" onchange="showSelectedFile('#surat-keterangan-telah-selesai-kp-label', event)" accept="application/pdf" disabled="disabled">
+						<label class="custom-file-label text-left" for="surat-keterangan-telah-selesai-kp" id="surat-keterangan-telah-selesai-kp-label">Pilih File</label>
+					</div>
 				@endif
 			</td>
 		</tr>
-		@if ($disposisi->progress == 10)
-			<tr class="bg-warning">
-				<td>3.</td>
-				<td colspan="2" class="align-middle">
-					Koordinator TGA mengusulkan Komisi Penguji dan Jadwal Seminar
+		<tr>
+			<td class="align-middle text-center">3.</td>
+			<td class="align-middle">Buku Laporan KP</td>
+			<td class="text-center align-middle">
+				@if ($disposisi->progress == 13)
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" name="buku-laporan-kp" id="buku-laporan-kp" onchange="showSelectedFile('#buku-laporan-kp-label', event)" accept="application/pdf">
+						<label class="custom-file-label text-left" for="buku-laporan-kp" id="buku-laporan-kp-label">Pilih File</label>
+					</div>
+				@elseif (in_array($disposisi->progress, range(14,14)))
+					<span class="text-yellow">Sedang diperiksa</span>
+				@elseif ($disposisi->progress > 14)
+					<i class="fa fa-check-circle text-green"></i><span class="ml-3">Ada</span>
+				@else
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" name="buku-laporan-kp" id="buku-laporan-kp" onchange="showSelectedFile('#buku-laporan-kp-label', event)" accept="application/pdf" disabled="disabled">
+						<label class="custom-file-label text-left" for="buku-laporan-kp" id="buku-laporan-kp-label">Pilih File</label>
+					</div>
+				@endif
+			</td>
+		</tr>
+		<tr>
+			<td class="align-middle text-center">4.</td>
+			<td class="align-middle">Lembar Pengesahan KP</td>
+			<td class="text-center align-middle">
+				@if ($disposisi->progress == 13)
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" name="lembar-pengesahan-kp" id="lembar-pengesahan-kp" onchange="showSelectedFile('#lembar-pengesahan-kp-label', event)" accept="application/pdf">
+						<label class="custom-file-label text-left" for="lembar-pengesahan-kp" id="lembar-pengesahan-kp-label">Pilih File</label>
+					</div>
+				@elseif (in_array($disposisi->progress, range(14,14)))
+					<span class="text-yellow">Sedang diperiksa</span>
+				@elseif ($disposisi->progress > 14)
+					<i class="fa fa-check-circle text-green"></i><span class="ml-3">Ada</span>
+				@else
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" name="lembar-pengesahan-kp" id="lembar-pengesahan-kp" onchange="showSelectedFile('#lembar-pengesahan-kp-label', event)" accept="application/pdf" disabled="disabled">
+						<label class="custom-file-label text-left" for="lembar-pengesahan-kp" id="lembar-pengesahan-kp-label">Pilih File</label>
+					</div>
+				@endif
+			</td>
+		</tr>
+		@if ($disposisi->progress == 13)
+			<tr>
+				<td colspan="3" class="align-middle text-right">
+					@csrf
+					<button type="submit" class="btn btn-sm btn-success">Kirim</button>
 				</td>
 			</tr>
-		@elseif ($disposisi->progress > 10)
-			@if (isset($roles->admin) | isset($roles->koor_prodi))
-				<tr>
-					<td>3.</td>
-					<td colspan="2" class="align-middle">
-						<table class="table table-bordered table-striped table-light">
-							<thead>
-								<tr>
-									<th colspan="2" class="align-middle text-center">Komisi Penguji</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="align-middle text-left text-bold">Ketua Penguji</td>
-									<td class="align-middle text-left">
-										{{ $data->ketua_penguji->content }}
-									</td>
-								</tr>
-								<tr>
-									<td class="align-middle text-left text-bold">Penguji 1</td>
-									<td class="align-middle text-left">
-										{{ $data->penguji_1->content }}
-									</td>
-								</tr>
-								<tr>
-									<td class="align-middle text-left text-bold">Penguji 2</td>
-									<td class="align-middle text-left">
-										{{ $data->penguji_2->content }}
-									</td>
-								</tr>
-								<tr>
-									<td class="align-middle text-left text-bold">Penguji 3</td>
-									<td class="align-middle text-left">
-										{{ $data->penguji_3->content }}
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<table class="table table-bordered table-striped table-light mt-4">
-							<thead>
-								<tr>
-									<th colspan="2" class="align-middle text-center">Jadwal Seminar</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="align-middle text-center text-bold">Hari</td>
-									<td class="align-middle text-center">
-										{{ \Carbon\Carbon::parse($data->tgl_seminar->content)->translatedFormat('l') }}
-									</td>
-								</tr>
-								<tr>
-									<td class="align-middle text-center text-bold">Tanggal</td>
-									<td class="align-middle text-center">
-										{{ \Carbon\Carbon::parse($data->tgl_seminar->content)->translatedFormat('d F Y') }}
-									</td>
-								</tr>
-								<tr>
-									<td class="align-middle text-center text-bold">Jam</td>
-									<td class="align-middle text-center">
-										{{ \Carbon\Carbon::parse($data->jam_seminar->content)->translatedFormat('H:i') }} WIB
-									</td>
-								</tr>
-								<tr>
-									<td class="align-middle text-center text-bold">Tempat</td>
-									<td class="align-middle text-center">
-										{{ $data->tempat_seminar->content }}
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</td>
-				</tr>
-			@else
-				<td>3.</td>
-				<td colspan="2" class="align-middle">
-					Koordinator TGA telah menetapkan Komisi Penguji dan Jadwal Seminar
-				</td>
-			@endif
-		@else
-			<tr class="text-muted">
-				<td>3.</td>
-				<td colspan="2" class="align-middle">
-					Koordinator TGA mengusulkan Komisi Penguji dan Jadwal Seminar
+		@elseif ($disposisi->progress < 13)
+			<tr>
+				<td colspan="3" class="align-middle text-right">
+					<button class="btn btn-sm btn-secondary disabled">Kirim</button>
 				</td>
 			</tr>
 		@endif

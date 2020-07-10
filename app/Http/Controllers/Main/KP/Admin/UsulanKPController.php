@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Main\TGA\Admin;
+namespace App\Http\Controllers\Main\KP\Admin;
 
 use App\Http\Controllers\Main\MainController;
 use Illuminate\Support\Facades\Validator;
@@ -12,20 +12,19 @@ use App\Disposisi;
 use App\Data;
 use App\Setting;
 
-class UsulanTGAController extends MainController
+class UsulanKPController extends MainController
 {
     public function view()
     {
     	$data = new Data();
 
-    	return $this->customView('tga.admin.usulan-tga', [
-            'nav_item_active' => 'tga',
-            'subtitle' => 'Usulan TGA',
+    	return $this->customView('kp.admin.usulan-kp', [
+            'nav_item_active' => 'kp',
+            'subtitle' => 'Usulan KP',
 
             'semua_mahasiswa' => Disposisi::where('progress', 2)->orderBy('updated_at')->get(),
             'spp' => $data->getDataMultiple('spp'),
             'krs' => $data->getDataMultiple('krs'),
-            'khs' => $data->getDataMultiple('khs'),
             'transkrip_sementara' => $data->getDataMultiple('transkrip-sementara'),
             'foto' => $data->getDataMultiple('foto')
         ]);
