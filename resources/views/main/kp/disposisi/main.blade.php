@@ -285,7 +285,7 @@
 							<tr class="{{ background(12, 12, $disposisi) }}">
 								<td><b>4</b></td>
 								<td colspan="4">
-									
+									@include('main.kp.disposisi.'.$folder.'.tahap-4')
 								</td>
 								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>
@@ -298,10 +298,10 @@
 							</tr>
 
 							{{-- Tahap 5 --}}
-							<tr class="{{ background(13, 15, $disposisi) }}">
+							<tr class="{{ background(13, 14, $disposisi) }}">
 								<td><b>5</b></td>
 								<td colspan="4">
-									
+									@include('main.kp.disposisi.'.$folder.'.tahap-5')
 								</td>
 								<td class="text-center align-middle">
 									{!! progress(13, $disposisi) !!}
@@ -312,62 +312,54 @@
 								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>
-								<td class="text-center align-middle">
-									{!! progress(15, $disposisi) !!}
-								</td>
+								<td class="text-center align-middle"></td>
 							</tr>			
 
 							{{-- Tahap 6 --}}
-							<tr class="{{ background(16, 17, $disposisi) }}">
+							<tr class="{{ background(15, 15, $disposisi) }}">
 								<td><b>6</b></td>
 								<td colspan="4">
-									
+									@include('main.kp.disposisi.'.$folder.'.tahap-6')
 								</td>
+								<td class="text-center align-middle"></td>
+								<td class="text-center align-middle"></td>
+								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle">
-									{!! progress(16, $disposisi) !!}
+									{!! progress(15, $disposisi) !!}
 								</td>
-								<td class="text-center align-middle">
-									{!! progress(17, $disposisi) !!}
-								</td>
-								<td class="text-center align-middle"></td>
-								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>
 							</tr>
 
 							{{-- Tahap 7 --}}
-							<tr class="{{ background(18, 20, $disposisi) }}">
+							<tr class="{{ background(16, 16, $disposisi) }}">
 								<td><b>7</b></td>
 								<td colspan="4">
-									
+									@include('main.kp.disposisi.'.$folder.'.tahap-7')
+								</td>
+								<td class="text-center align-middle"></td>
+								<td class="text-center align-middle"></td>
+								<td class="text-center align-middle"></td>
+								<td class="text-center align-middle"></td>
+								<td class="text-center align-middle"></td>
+								<td class="text-center align-middle">
+									{!! progress(16, $disposisi) !!}
+								</td>
+							</tr>
+							
+							{{-- Tahap 8 --}}
+							<tr class="{{ background(17, 18, $disposisi) }}">
+								<td><b>8</b></td>
+								<td colspan="4">
+									@include('main.kp.disposisi.'.$folder.'.tahap-8')
+								</td>
+								<td class="text-center align-middle"></td>
+								<td class="text-center align-middle">
+									{!! progress(17, $disposisi) !!}
 								</td>
 								<td class="text-center align-middle">
 									{!! progress(18, $disposisi) !!}
 								</td>
-								<td class="text-center align-middle">
-									{!! progress(19, $disposisi) !!}
-								</td>
-								<td class="text-center align-middle">
-									{!! progress(20, $disposisi) !!}
-								</td>
-								<td class="text-center align-middle"></td>
-								<td class="text-center align-middle"></td>
-								<td class="text-center align-middle"></td>
-							</tr>
-							
-							{{-- Tahap 8 --}}
-							<tr class="{{ background(21, 22, $disposisi) }}">
-								<td><b>8</b></td>
-								<td colspan="4">
-									
-								</td>
-								<td class="text-center align-middle">
-									{!! progress(21, $disposisi) !!}
-								</td>
-								<td class="text-center align-middle">
-									{!! progress(22, $disposisi) !!}
-								</td>
-								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>

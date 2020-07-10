@@ -1,7 +1,7 @@
 <table width="100%" class="table table-bordered{{ formBackground(5, 7, $disposisi) }}">
 	<tbody>
 		<tr>
-			<td colspan="2" class="align-middle"><b>Pengajuan Surat Ke Proyek</b></td>
+			<td colspan="{{ $disposisi->progress < 6 ? 3 : 2 }}" class="align-middle"><b>Pengajuan Surat Ke Proyek</b></td>
 		</tr>
 		<tr>
 			<td class="align-middle">Surat Permohonan Ke Proyek</td>
@@ -22,6 +22,16 @@
 					</div>
 				@endif
 			</td>
+			@if ($disposisi->progress == 5)
+				<td class="text-center align-middle">
+					@csrf
+					<button type="submit" class="btn btn-sm btn-success">Kirim</button>
+				</td>
+			@elseif ($disposisi->progress < 5)
+				<td class="text-center align-middle">
+					<button class="btn btn-sm btn-secondary disabled">Kirim</button>
+				</td>
+			@endif
 		</tr>
 	</tbody>
 </table>
