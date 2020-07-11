@@ -81,12 +81,12 @@
                     <li><a href="" class="dropdown-item">6. Persetujuan Usulan Kelengkapan Dokumen Administrasi</a></li>
                   @endif
                   @if (isset($role->pembimbing))
-                    <li><a href="" class="dropdown-item">1. Pemeriksaan Berkas KP</a></li>
+                    <li><a href="{{ route('main.kp.pembimbing.pemeriksaan-berkas-kp') }}" class="dropdown-item">1. Pemeriksaan Berkas KP</a></li>
                     <li><a href="" class="dropdown-item">2. Penilaian KP</a></li>
                     <li><a href="" class="dropdown-item">3. Pemeriksaan Kelengkapan Dokumen KP</a></li>
                   @endif
                   @if (isset($role->pembahas))
-                    <li><a href="" class="dropdown-item">1. Penilaian KP</a></li>
+                    <li><a href="" class="dropdown-item">4. Penilaian KP</a></li>
                   @endif
                   @if (isset($role->ketua_kel_keahlian))
                     <li><a href="{{ route('main.kp.ketua-kel-keahlian.pengusulan-pembimbing-pembahas') }}" class="dropdown-item">1. Pengusulan Pembimbing dan Pembahas</a></li>

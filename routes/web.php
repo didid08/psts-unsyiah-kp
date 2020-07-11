@@ -103,9 +103,8 @@ Route::middleware(['auth'])->group(function () {
 		});
 
 		//Pembimbing
-		Route::middleware('only.pembimbing-co')->group(function () {
-			
-		});
+			Route::get('/main/kp/pembimbing/pemeriksaan-berkas-kp', 'Main\KP\Pembimbing\PemeriksaanBerkasKPController@view')->name('main.kp.pembimbing.pemeriksaan-berkas-kp');
+			Route::post('/main/kp/pembimbing/pemeriksaan-berkas-kp/process/{nim}', 'Main\KP\Pembimbing\PemeriksaanBerkasKPController@process')->name('main.kp.pembimbing.pemeriksaan-berkas-kp.process');
 
 		//Pembahas
 		Route::middleware('only.koor-tga')->group(function () {
