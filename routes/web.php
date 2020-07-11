@@ -78,6 +78,9 @@ Route::middleware(['auth'])->group(function () {
 
 			Route::get('/main/kp/admin/usulan-surat-tugas-pengambilan-data', 'Main\KP\Admin\UsulanSuratTugasPengambilanDataController@view')->name('main.kp.admin.usulan-stpd');
 			Route::post('/main/kp/admin/usulan-surat-tugas-pengambilan-data/process/{nim}', 'Main\KP\Admin\UsulanSuratTugasPengambilanDataController@process')->name('main.kp.admin.usulan-stpd.process');
+
+			Route::get('/main/kp/admin/usulan-pengisian-masa-kp', 'Main\KP\Admin\UsulanPengisianMasaKPController@view')->name('main.kp.admin.usulan-pengisian-masa-kp');
+			Route::post('/main/kp/admin/usulan-pengisian-masa-kp/process/{nim}/{opsi}', 'Main\KP\Admin\UsulanPengisianMasaKPController@process')->name('main.kp.admin.usulan-pengisian-masa-kp.process');
 		});
 
 		//Koor Prodi
@@ -106,8 +109,18 @@ Route::middleware(['auth'])->group(function () {
 			Route::get('/main/kp/pembimbing/pemeriksaan-berkas-kp', 'Main\KP\Pembimbing\PemeriksaanBerkasKPController@view')->name('main.kp.pembimbing.pemeriksaan-berkas-kp');
 			Route::post('/main/kp/pembimbing/pemeriksaan-berkas-kp/process/{nim}', 'Main\KP\Pembimbing\PemeriksaanBerkasKPController@process')->name('main.kp.pembimbing.pemeriksaan-berkas-kp.process');
 
+			Route::get('/main/kp/pembimbing/penilaian-kp', 'Main\KP\Pembimbing\PenilaianKPController@view')->name('main.kp.pembimbing.penilaian-kp');
+			Route::post('/main/kp/pembimbing/penilaian-kp/process/{nim}', 'Main\KP\Pembimbing\PenilaianKPController@process')->name('main.kp.pembimbing.penilaian-kp.process');
+
+			Route::get('/main/kp/pembimbing/isi-nilai-kp/{nim}', 'Main\KP\Pembimbing\PenilaianKPController@isiNilaiKP')->name('main.kp.pembimbing.isi-nilai-kp');
+			Route::get('/main/kp/cetak-nilai-kp-dari-pembimbing/{nim}', 'Main\KP\Pembimbing\PenilaianKPController@cetakNilaiKP')->name('main.kp.cetak-nilai-kp-pembimbing');
+			Route::post('/main/kp/pembimbing/isi-nilai-kp/{nim}/simpan', 'Main\KP\Pembimbing\PenilaianKPController@isiNilaiKPSimpan')->name('main.kp.pembimbing.isi-nilai-kp.simpan');
+
 		//Pembahas
-		Route::middleware('only.koor-tga')->group(function () {
-			
-		});
+			Route::get('/main/kp/pembahas/penilaian-kp', 'Main\KP\Pembahas\PenilaianKPController@view')->name('main.kp.pembahas.penilaian-kp');
+			Route::post('/main/kp/pembahas/penilaian-kp/process/{nim}', 'Main\KP\Pembahas\PenilaianKPController@process')->name('main.kp.pembahas.penilaian-kp.process');
+
+			Route::get('/main/kp/pembahas/isi-nilai-kp/{nim}', 'Main\KP\Pembahas\PenilaianKPController@isiNilaiKP')->name('main.kp.pembahas.isi-nilai-kp');
+			Route::get('/main/kp/cetak-nilai-kp-dari-pembahas/{nim}', 'Main\KP\Pembahas\PenilaianKPController@cetakNilaiKP')->name('main.kp.cetak-nilai-kp-pembahas');
+			Route::post('/main/kp/pembahas/isi-nilai-kp/{nim}/simpan', 'Main\KP\Pembahas\PenilaianKPController@isiNilaiKPSimpan')->name('main.kp.pembahas.isi-nilai-kp.simpan');
 });

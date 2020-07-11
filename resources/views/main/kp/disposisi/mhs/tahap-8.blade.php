@@ -8,7 +8,7 @@
 			<td class="align-middle">Nilai Pembimbing</td>
 			<td class="align-middle text-center">
 				@if ($disposisi->progress >= 18)
-					<input type="text" class="form-control bg-light" readonly="readonly" value="--">
+					<i class="fa fa-check-circle text-green"></i><span class="ml-3">Ada</span>
 				@else
 					--
 				@endif
@@ -19,7 +19,7 @@
 			<td class="align-middle">Nilai Pembahas</td>
 			<td class="align-middle text-center">
 				@if ($disposisi->progress >= 18)
-					<input type="text" class="form-control bg-light" readonly="readonly" value="--">
+					<i class="fa fa-check-circle text-green"></i><span class="ml-3">Ada</span>
 				@else
 					--
 				@endif
@@ -32,7 +32,7 @@
 				@if ($disposisi->progress > 18)
 					<input type="text" class="form-control bg-light" readonly="readonly" value="--">
 				@else
-					--
+					<span class="text-yellow">Sedang diproses</span>
 				@endif
 			</td>
 		</tr>

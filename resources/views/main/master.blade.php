@@ -69,7 +69,7 @@
                     <li><a href="{{ route('main.kp.admin.usulan-surat-balasan-dari-proyek') }}" class="dropdown-item">5. Usulan Surat Balasan Dari Proyek</a></li>
                     <li><a href="{{ route('main.kp.admin.usulan-sptpd') }}" class="dropdown-item">6. Usulan Surat Permohonan Tugas Pengambilan Data</a></li>
                     <li><a href="{{ route('main.kp.admin.usulan-stpd') }}" class="dropdown-item">7. Usulan Surat Tugas Pengambilan Data</a></li>
-                    <li><a href="" class="dropdown-item">8. Usulan Pengisian Masa KP</a></li>
+                    <li><a href="{{ route('main.kp.admin.usulan-pengisian-masa-kp') }}" class="dropdown-item">8. Usulan Pengisian Masa KP</a></li>
                     <li><a href="" class="dropdown-item">9. Usulan Kelengkapan Dokumen Administrasi</a></li>
                   @endif
                   @if (isset($role->koor_prodi))
@@ -82,11 +82,11 @@
                   @endif
                   @if (isset($role->pembimbing))
                     <li><a href="{{ route('main.kp.pembimbing.pemeriksaan-berkas-kp') }}" class="dropdown-item">1. Pemeriksaan Berkas KP</a></li>
-                    <li><a href="" class="dropdown-item">2. Penilaian KP</a></li>
+                    <li><a href="{{ route('main.kp.pembimbing.penilaian-kp') }}" class="dropdown-item">2. Penilaian KP (Pembimbing)</a></li>
                     <li><a href="" class="dropdown-item">3. Pemeriksaan Kelengkapan Dokumen KP</a></li>
                   @endif
                   @if (isset($role->pembahas))
-                    <li><a href="" class="dropdown-item">4. Penilaian KP</a></li>
+                    <li><a href="{{ route('main.kp.pembahas.penilaian-kp') }}" class="dropdown-item">4. Penilaian KP (Pembahas)</a></li>
                   @endif
                   @if (isset($role->ketua_kel_keahlian))
                     <li><a href="{{ route('main.kp.ketua-kel-keahlian.pengusulan-pembimbing-pembahas') }}" class="dropdown-item">1. Pengusulan Pembimbing dan Pembahas</a></li>

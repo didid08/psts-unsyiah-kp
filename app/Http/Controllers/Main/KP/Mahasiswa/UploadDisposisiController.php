@@ -129,19 +129,30 @@ class UploadDisposisiController extends Controller
                 ]);
 
                 return redirect()->back()->with('success', 'Berhasil mengunggah Surat Balasan Dari Proyek');
-            } elseif ($progress == 33) {
-                $data = new Data;
-                if (!$data->checkMultipleData(User::myData('id'), ['biodata', 'transkrip', 'bukti-bebas-lab', 'artikel-jim'])) {
-                    return redirect()->back()->with('error', 'Harap lengkapi data usul yudisium');
-                }
-
+            } elseif ($progress == 14) {
                 $validate_rules = [
-                    'kelengkapan-dokumen-administrasi-sidang-buku' => 'required|file|mimes:zip|max:10240'
+                    'masa-kerja-praktek-1' => 'required',
+                    'masa-kerja-praktek-2' => 'required',
+
+                    'surat-keterangan-telah-selesai-kp' => 'required|file|mimes:pdf|max:5120',
+                    'buku-laporan-kp' => 'required|file|mimes:pdf|max:5120',
+                    'lembar-pengesahan-kp' => 'required|file|mimes:pdf|max:5120'
                 ];
                 $validate_errors = [
-                    'kelengkapan-dokumen-administrasi-sidang-buku.required' => 'Harap unggah Kelengkapan Dokumen Administrasi Sidang Buku',
-                    'kelengkapan-dokumen-administrasi-sidang-buku.mimes' => 'Harap unggah dalam format zip',
-                    'kelengkapan-dokumen-administrasi-sidang-buku.max' => 'Ukuran Kelengkapan Dokumen Administrasi Sidang Buku melebihi 10 MB'
+                    'masa-kerja-praktek-1.required' => 'Harap tetapkan tanggal mulai Kerja Praktek',
+                    'masa-kerja-praktek-2.required' => 'Harap tetapkan tanggal berakhir Kerja Praktek',
+
+                    'surat-keterangan-telah-selesai-kp.required' => 'Harap unggah Surat Keterangan Telah Selesai KP',
+                    'surat-keterangan-telah-selesai-kp.mimes' => 'Harap unggah dalam format pdf',
+                    'surat-keterangan-telah-selesai-kp.max' => 'Ukuran Surat Keterangan Telah Selesai KP melebihi 5 MB',
+
+                    'buku-laporan-kp.required' => 'Harap unggah Buku Laporan KP',
+                    'buku-laporan-kp.mimes' => 'Harap unggah dalam format pdf',
+                    'buku-laporan-kp.max' => 'Ukuran Buku Laporan KP melebihi 5 MB',
+
+                    'lembar-pengesahan-kp.required' => 'Harap unggah Lembar Pengesahan KP',
+                    'lembar-pengesahan-kp.mimes' => 'Harap unggah dalam format pdf',
+                    'lembar-pengesahan-kp.max' => 'Ukuran Lembar Pengesahan KP melebihi 5 MB'
                 ];
 
                 $validator = Validator::make($request->all(), $validate_rules, $validate_errors);
@@ -149,27 +160,72 @@ class UploadDisposisiController extends Controller
                     return redirect()->back()->withErrors($validator);
                 }
 
-                $filename = User::myData('nomor_induk').'-kelengkapan-dokumen-administrasi-sidang-buku.'.$request->file('kelengkapan-dokumen-administrasi-sidang-buku')->extension();
+                Data::updateOrCreate([
+                    'user_id' => User::myData('id'),
+                    'category' => 'data_usul',
+                    'type' => 'text',
+                    'name' => 'masa-kerja-praktek-1',
+                    'display_name' => 'Masa Kerja Praktek Mulai'
+                ], [
+                    'content' => $request->input('masa-kerja-praktek-1')
+                ]);
+                Data::updateOrCreate([
+                    'user_id' => User::myData('id'),
+                    'category' => 'data_usul',
+                    'type' => 'text',
+                    'name' => 'masa-kerja-praktek-2',
+                    'display_name' => 'Masa Kerja Praktek Berakhir'
+                ], [
+                    'content' => $request->input('masa-kerja-praktek-2')
+                ]);
 
-                $request->file('kelengkapan-dokumen-administrasi-sidang-buku')->storeAs(
-                    'data', $filename
+                $filename1 = User::myData('nomor_induk').'-surat-keterangan-telah-selesai-kp.'.$request->file('surat-keterangan-telah-selesai-kp')->extension();
+                $filename2 = User::myData('nomor_induk').'-buku-laporan-kp.'.$request->file('buku-laporan-kp')->extension();
+                $filename3 = User::myData('nomor_induk').'-lembar-pengesahan-kp.'.$request->file('lembar-pengesahan-kp')->extension();
+
+                $request->file('surat-keterangan-telah-selesai-kp')->storeAs(
+                    'data', $filename1
+                );
+                $request->file('buku-laporan-kp')->storeAs(
+                    'data', $filename2
+                );
+                $request->file('lembar-pengesahan-kp')->storeAs(
+                    'data', $filename3
                 );
 
                 Data::updateOrCreate([
                     'user_id' => User::myData('id'),
-                    'category' => 'data_yudisium',
+                    'category' => 'data_usul',
                     'type' => 'file',
-                    'name' => 'kelengkapan-dokumen-administrasi-sidang-buku',
-                    'display_name' => 'Kelengkapan Dokumen Administrasi Sidang Buku'
+                    'name' => 'surat-keterangan-telah-selesai-kp',
+                    'display_name' => 'Surat Keterangan Telah Selesai KP'
                 ], [
-                    'content' => $filename
+                    'content' => $filename1
+                ]);
+                Data::updateOrCreate([
+                    'user_id' => User::myData('id'),
+                    'category' => 'data_usul',
+                    'type' => 'file',
+                    'name' => 'buku-laporan-kp',
+                    'display_name' => 'Buku Laporan KP'
+                ], [
+                    'content' => $filename2
+                ]);
+                Data::updateOrCreate([
+                    'user_id' => User::myData('id'),
+                    'category' => 'data_usul',
+                    'type' => 'file',
+                    'name' => 'lembar-pengesahan-kp',
+                    'display_name' => 'Lembar Pengesahan KP'
+                ], [
+                    'content' => $filename3
                 ]);
 
                 $disposisi->update([
-                    'progress' => 34
+                    'progress' => 15
                 ]);
 
-                return redirect()->back()->with('success', 'Berhasil mengunggah berkas yudisium');
+                return redirect()->back()->with('success', 'Berhasil mengunggah data pengisian masa KP');
             }
             return abort(404);
         }

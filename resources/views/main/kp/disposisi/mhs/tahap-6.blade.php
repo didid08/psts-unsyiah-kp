@@ -12,7 +12,7 @@
 				@if (in_array($disposisi->progress, range(16,16)))
 					<span class="text-yellow">Sedang diproses</span>
 				@elseif ($disposisi->progress > 16)
-					<input type="text" class="form-control bg-light" disabled="disabled" value="..">
+					<input type="text" class="form-control bg-light" disabled="disabled" value="{{ isset($data->catatan_kp_pembimbing) ? $data->catatan_kp_pembimbing->content : '' }}" placeholder="Tidak ada catatan">
 				@else
 					--
 				@endif
@@ -24,7 +24,7 @@
 				@if (in_array($disposisi->progress, range(16,16)))
 					<span class="text-yellow">Sedang diproses</span>
 				@elseif ($disposisi->progress > 16)
-					<input type="text" class="form-control bg-light" disabled="disabled" value="..">
+					<a href="{{ route('main.kp.cetak-nilai-kp-pembimbing', ['nim' => $mahasiswa->nomor_induk]) }}" class="btn btn-sm btn-success">Lihat</a>
 				@else
 					--
 				@endif

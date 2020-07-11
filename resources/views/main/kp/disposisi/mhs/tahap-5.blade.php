@@ -1,24 +1,29 @@
+@if ($disposisi->progress == 14)
+	<form action="{{ route('main.kp.mahasiswa.upload-disposisi', ['progress' => 14]) }}" method="post" style="display: inline;" enctype="multipart/form-data">
+@endif
 <table width="100%" class="table table-bordered{{ formBackground(14, 15, $disposisi) }}">
 	<tbody>
 		<tr>
 			<td class="align-middle">1.</td>
 			<td class="align-middle">Masa Kerja Praktek</td>
-			<td class="text-center align-middle">
+			<td class="align-middle">
 				@if ($disposisi->progress == 14)
-					<input type="text" class="form-control" name="masa-kerja-praktek">
+					Tgl<input type="date" class="form-control ml-2" name="masa-kerja-praktek-1" style="display: inline-block; width: 10em;"><br>
+					s/d<input type="date" class="form-control ml-2" name="masa-kerja-praktek-2" style="display: inline-block; width: 10em;">
 				@elseif (in_array($disposisi->progress, range(15,15)))
 					<span class="text-yellow">Sedang diperiksa</span>
 				@elseif ($disposisi->progress > 15)
-					<input type="text" class="form-control bg-light" disabled="disabled" value="..">
+					Tgl <u>{{ date('d/m/Y', strtotime($data->masa_kerja_praktek_1->content)) }}</u> s/d <u>{{ date('d/m/Y', strtotime($data->masa_kerja_praktek_2->content)) }}</u>
 				@else
-					<input type="text" class="form-control" disabled="disabled">
+					Tgl<input type="date" disabled="disabled" class="form-control ml-2" name="masa-kerja-praktek-1" style="display: inline-block; width: 10em;"><br>
+					s/d<input type="date" disabled="disabled" class="form-control ml-2" name="masa-kerja-praktek-2" style="display: inline-block; width: 10em;">
 				@endif
 			</td>
 		</tr>
 		<tr>
 			<td class="align-middle">2.</td>
 			<td class="align-middle">Surat keterangan telah selesai KP dari penanggung jawab KP</td>
-			<td class="text-center align-middle">
+			<td class="align-middle">
 				@if ($disposisi->progress == 14)
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="surat-keterangan-telah-selesai-kp" id="surat-keterangan-telah-selesai-kp" onchange="showSelectedFile('#surat-keterangan-telah-selesai-kp-label', event)" accept="application/pdf">
@@ -39,7 +44,7 @@
 		<tr>
 			<td class="align-middle text-center">3.</td>
 			<td class="align-middle">Buku Laporan KP</td>
-			<td class="text-center align-middle">
+			<td class="align-middle">
 				@if ($disposisi->progress == 14)
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="buku-laporan-kp" id="buku-laporan-kp" onchange="showSelectedFile('#buku-laporan-kp-label', event)" accept="application/pdf">
@@ -60,7 +65,7 @@
 		<tr>
 			<td class="align-middle text-center">4.</td>
 			<td class="align-middle">Lembar Pengesahan KP</td>
-			<td class="text-center align-middle">
+			<td class="align-middle">
 				@if ($disposisi->progress == 14)
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" name="lembar-pengesahan-kp" id="lembar-pengesahan-kp" onchange="showSelectedFile('#lembar-pengesahan-kp-label', event)" accept="application/pdf">
@@ -94,3 +99,6 @@
 		@endif
 	</tbody>
 </table>
+@if ($disposisi->progress == 14)
+	</form>
+@endif
