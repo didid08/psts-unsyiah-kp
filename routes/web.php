@@ -81,6 +81,9 @@ Route::middleware(['auth'])->group(function () {
 
 			Route::get('/main/kp/admin/usulan-pengisian-masa-kp', 'Main\KP\Admin\UsulanPengisianMasaKPController@view')->name('main.kp.admin.usulan-pengisian-masa-kp');
 			Route::post('/main/kp/admin/usulan-pengisian-masa-kp/process/{nim}/{opsi}', 'Main\KP\Admin\UsulanPengisianMasaKPController@process')->name('main.kp.admin.usulan-pengisian-masa-kp.process');
+
+			Route::get('/main/kp/admin/usulan-kelengkapan-dokumen-administrasi', 'Main\KP\Admin\UsulanKelengkapanDokumenAdministrasiController@view')->name('main.kp.admin.usulan-kelengkapan-dokumen-administrasi');
+			Route::post('/main/kp/admin/usulan-kelengkapan-dokumen-administrasi/process/{nim}/{opsi}', 'Main\KP\Admin\UsulanKelengkapanDokumenAdministrasiController@process')->name('main.kp.admin.usulan-kelengkapan-dokumen-administrasi.process');
 		});
 
 		//Koor Prodi
@@ -96,7 +99,14 @@ Route::middleware(['auth'])->group(function () {
 
 			Route::get('/main/kp/koor-prodi/persetujuan-stpd', 'Main\KP\KoorProdi\PersetujuanSuratTugasPengambilanDataController@view')->name('main.kp.koor-prodi.persetujuan-stpd');
 			Route::post('/main/kp/koor-prodi/persetujuan-stpd/process/{nim}/{opsi}', 'Main\KP\KoorProdi\PersetujuanSuratTugasPengambilanDataController@process')->name('main.kp.koor-prodi.persetujuan-stpd.process');
+		
+			Route::get('/main/kp/koor-prodi/pengisian-rekap-nilai-kp', 'Main\KP\KoorProdi\PengisianRekapNilaiKPController@view')->name('main.kp.koor-prodi.pengisian-rekap-nilai-kp');
+			Route::post('/main/kp/koor-prodi/pengisian-rekap-nilai-kp/process/{nim}', 'Main\KP\KoorProdi\PengisianRekapNilaiKPController@process')->name('main.kp.koor-prodi.pengisian-rekap-nilai-kp.process');
+
+			Route::get('/main/kp/koor-prodi/persetujuan-usulan-kelengkapan-dokumen-administrasi', 'Main\KP\KoorProdi\PersetujuanUsulanKelengkapanDokumenAdministrasiController@view')->name('main.kp.koor-prodi.persetujuan-usulan-kelengkapan-dokumen-administrasi');
+			Route::post('/main/kp/koor-prodi/persetujuan-usulan-kelengkapan-dokumen-administrasi/process/{nim}/{opsi}', 'Main\KP\KoorProdi\PersetujuanUsulanKelengkapanDokumenAdministrasiController@process')->name('main.kp.koor-prodi.persetujuan-usulan-kelengkapan-dokumen-administrasi.process');
 		});
+		Route::get('/main/kp/cetak-rekap-nilai-kp/{nim}', 'Main\KP\KoorProdi\PengisianRekapNilaiKPController@cetakRekapNilaiKP')->name('main.kp.cetak-rekap-nilai-kp');
 
 		//Ketua Kel Keahlian
 		Route::middleware('only.ketua-kel-keahlian')->group(function () {
@@ -115,6 +125,9 @@ Route::middleware(['auth'])->group(function () {
 			Route::get('/main/kp/pembimbing/isi-nilai-kp/{nim}', 'Main\KP\Pembimbing\PenilaianKPController@isiNilaiKP')->name('main.kp.pembimbing.isi-nilai-kp');
 			Route::get('/main/kp/cetak-nilai-kp-dari-pembimbing/{nim}', 'Main\KP\Pembimbing\PenilaianKPController@cetakNilaiKP')->name('main.kp.cetak-nilai-kp-pembimbing');
 			Route::post('/main/kp/pembimbing/isi-nilai-kp/{nim}/simpan', 'Main\KP\Pembimbing\PenilaianKPController@isiNilaiKPSimpan')->name('main.kp.pembimbing.isi-nilai-kp.simpan');
+
+			Route::get('/main/kp/pembimbing/pemeriksaan-kelengkapan-dokumen-kp', 'Main\KP\Pembimbing\PemeriksaanKelengkapanDokumenKPController@view')->name('main.kp.pembimbing.pemeriksaan-kelengkapan-dokumen-kp');
+			Route::post('/main/kp/pembimbing/pemeriksaan-kelengkapan-dokumen-kp/process/{nim}', 'Main\KP\Pembimbing\PemeriksaanKelengkapanDokumenKPController@process')->name('main.kp.pembimbing.pemeriksaan-kelengkapan-dokumen-kp.process');
 
 		//Pembahas
 			Route::get('/main/kp/pembahas/penilaian-kp', 'Main\KP\Pembahas\PenilaianKPController@view')->name('main.kp.pembahas.penilaian-kp');

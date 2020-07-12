@@ -30,9 +30,11 @@
 			<td class="align-middle">Rekap Nilai KP</td>
 			<td class="align-middle text-center">
 				@if ($disposisi->progress > 18)
-					<input type="text" class="form-control bg-light" readonly="readonly" value="--">
-				@else
+					<i class="fa fa-check-circle text-green"></i><span class="ml-3">Ada</span> (<a href="{{ route('main.kp.cetak-rekap-nilai-kp', ['nim' => $mahasiswa->nomor_induk]) }}" class="text-success">Lihat</a>)
+				@elseif ($disposisi->progress == 18)
 					<span class="text-yellow">Sedang diproses</span>
+				@else
+					--
 				@endif
 			</td>
 		</tr>

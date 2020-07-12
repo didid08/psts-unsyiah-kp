@@ -226,8 +226,44 @@ class UploadDisposisiController extends Controller
                 ]);
 
                 return redirect()->back()->with('success', 'Berhasil mengunggah data pengisian masa KP');
+            } elseif ($progress == 20) {
+                $validate_rules = [
+                    'kelengkapan-dokumen-administrasi' => 'required|file|mimes:zip|max:10240'
+                ];
+                $validate_errors = [
+                    'kelengkapan-dokumen-administrasi.required' => 'Harap unggah Kelengkapan Dokumen Administrasi',
+                    'kelengkapan-dokumen-administrasi.mimes' => 'Harap unggah dalam format zip',
+                    'kelengkapan-dokumen-administrasi.max' => 'Ukuran Kelengkapan Dokumen Administrasi melebihi 10 MB'
+                ];
+
+                $validator = Validator::make($request->all(), $validate_rules, $validate_errors);
+                if ($validator->fails()) {
+                    return redirect()->back()->withErrors($validator);
+                }
+
+                $filename = User::myData('nomor_induk').'-kelengkapan-dokumen-administrasi.'.$request->file('kelengkapan-dokumen-administrasi')->extension();
+
+                $request->file('kelengkapan-dokumen-administrasi')->storeAs(
+                    'data', $filename
+                );
+
+                Data::updateOrCreate([
+                    'user_id' => User::myData('id'),
+                    'category' => 'data_usul',
+                    'type' => 'file',
+                    'name' => 'kelengkapan-dokumen-administrasi',
+                    'display_name' => 'Kelengkapan Dokumen Administrasi'
+                ], [
+                    'content' => $filename
+                ]);
+
+                $disposisi->update([
+                    'progress' => 21
+                ]);
+
+                return redirect()->back()->with('success', 'Berhasil mengunggah Kelengkapan Dokumen Administrasi');
             }
             return abort(404);
-        }
+        } 
     }
 }

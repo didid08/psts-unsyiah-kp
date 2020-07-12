@@ -43,14 +43,14 @@
           <li class="nav-item">
             <a href="{{ route('main.dashboard') }}" class="nav-link{{ $nav_item_active == 'dashboard' ? ' text-bold' : '' }}">Dashboard</a>
           </li>
-          @if (isset($role->admin))
+          {{--@if (isset($role->admin))
             <li class="nav-item">
               <a href="{{ route('main.admin.cek-data') }}" class="nav-link{{ $nav_item_active == 'cek-data' ? ' text-bold' : '' }}">Cek Data</a>
             </li>
             <li class="nav-item">
               <a href="{{ route('main.admin.akun') }}" class="nav-link{{ $nav_item_active == 'akun' ? ' text-bold' : '' }}">Akun</a>
             </li>
-          @endif
+          @endif--}}
           @if ($category != 'tamu')
             @if (isset($role->admin) | isset($role->koor_prodi) | isset($role->pembahas) | isset($role->ketua_kel_keahlian) | isset($role->pembimbing) | isset($role->mhs))
               <li class="nav-item dropdown">
@@ -70,20 +70,20 @@
                     <li><a href="{{ route('main.kp.admin.usulan-sptpd') }}" class="dropdown-item">6. Usulan Surat Permohonan Tugas Pengambilan Data</a></li>
                     <li><a href="{{ route('main.kp.admin.usulan-stpd') }}" class="dropdown-item">7. Usulan Surat Tugas Pengambilan Data</a></li>
                     <li><a href="{{ route('main.kp.admin.usulan-pengisian-masa-kp') }}" class="dropdown-item">8. Usulan Pengisian Masa KP</a></li>
-                    <li><a href="" class="dropdown-item">9. Usulan Kelengkapan Dokumen Administrasi</a></li>
+                    <li><a href="{{ route('main.kp.admin.usulan-kelengkapan-dokumen-administrasi') }}" class="dropdown-item">9. Usulan Kelengkapan Dokumen Administrasi</a></li>
                   @endif
                   @if (isset($role->koor_prodi))
                     <li><a href="{{ route('main.kp.koor-prodi.persetujuan-usulan-kp') }}" class="dropdown-item">1. Persetujuan Usulan KP</a></li>
                     <li><a href="{{ route('main.kp.koor-prodi.penetapan-surat-ke-proyek') }}" class="dropdown-item">2. Penetapan Surat Ke Proyek</a></li>
                     <li><a href="{{ route('main.kp.koor-prodi.penetapan-sk-pembimbing-pembahas') }}" class="dropdown-item">3. Penetapan SK Pembimbing/Pembahas</a></li>
                     <li><a href="{{ route('main.kp.koor-prodi.persetujuan-stpd') }}" class="dropdown-item">4. Persetujuan Surat Tugas Pengambilan Data</a></li>
-                    <li><a href="" class="dropdown-item">5. Pengisian Rekap Nilai KP</a></li>
-                    <li><a href="" class="dropdown-item">6. Persetujuan Usulan Kelengkapan Dokumen Administrasi</a></li>
+                    <li><a href="{{ route('main.kp.koor-prodi.pengisian-rekap-nilai-kp') }}" class="dropdown-item">5. Pengisian Rekap Nilai KP</a></li>
+                    <li><a href="{{ route('main.kp.koor-prodi.persetujuan-usulan-kelengkapan-dokumen-administrasi') }}" class="dropdown-item">6. Persetujuan Usulan Kelengkapan Dokumen Administrasi</a></li>
                   @endif
                   @if (isset($role->pembimbing))
                     <li><a href="{{ route('main.kp.pembimbing.pemeriksaan-berkas-kp') }}" class="dropdown-item">1. Pemeriksaan Berkas KP</a></li>
                     <li><a href="{{ route('main.kp.pembimbing.penilaian-kp') }}" class="dropdown-item">2. Penilaian KP (Pembimbing)</a></li>
-                    <li><a href="" class="dropdown-item">3. Pemeriksaan Kelengkapan Dokumen KP</a></li>
+                    <li><a href="{{ route('main.kp.pembimbing.pemeriksaan-kelengkapan-dokumen-kp') }}" class="dropdown-item">3. Pemeriksaan Kelengkapan Dokumen KP</a></li>
                   @endif
                   @if (isset($role->pembahas))
                     <li><a href="{{ route('main.kp.pembahas.penilaian-kp') }}" class="dropdown-item">4. Penilaian KP (Pembahas)</a></li>

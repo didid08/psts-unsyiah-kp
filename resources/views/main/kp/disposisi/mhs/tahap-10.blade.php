@@ -1,3 +1,6 @@
+@if ($disposisi->progress == 20)
+	<form action="{{ route('main.kp.mahasiswa.upload-disposisi', ['progress' => 20]) }}" method="post" style="display: inline;" enctype="multipart/form-data">
+@endif
 <table width="100%" class="table table-bordered{{ formBackground(20, 22, $disposisi) }}">
 	<tbody>
 		<tr>
@@ -42,3 +45,6 @@
 		</tr>
 	</tbody>
 </table>
+@if ($disposisi->progress == 20)
+	</form>
+@endif
