@@ -1,37 +1,21 @@
-<table width="100%" class="table table-bordered{{ formBackground(5, 7, $disposisi) }}">
+<table width="100%" class="table table-bordered{{ formBackground(5, 6, $disposisi) }}">
 	<tbody>
 		<tr>
-			<td colspan="{{ $disposisi->progress < 6 ? 3 : 2 }}" class="align-middle"><b>Pengajuan Surat Ke Proyek</b></td>
+			<td colspan="2" class="align-middle"><b>Pengajuan Surat Ke Proyek</b></td>
 		</tr>
 		<tr>
 			<td class="align-middle">Surat Permohonan Ke Proyek</td>
 			<td class="text-center align-middle">
 				@if ($disposisi->progress == 5)
-					<div class="custom-file">
-						<input type="file" class="custom-file-input" name="surat-permohonan-ke-proyek" id="surat-permohonan-ke-proyek" onchange="showSelectedFile('#surat-permohonan-ke-proyek-label', event)" accept="application/pdf">
-						<label class="custom-file-label text-left" for="surat-permohonan-ke-proyek" id="surat-permohonan-ke-proyek-label">Pilih File</label>
-					</div>
-				@elseif (in_array($disposisi->progress, range(6,7)))
+					Belum diunggah
+				@elseif (in_array($disposisi->progress, range(6,6)))
 					<span class="text-warning">sedang diperiksa</span>
-				@elseif ($disposisi->progress > 7)
+				@elseif ($disposisi->progress > 6)
 					<i class="fa fa-check-circle text-green"></i><span class="ml-3">Ada</span>
 				@else
-					<div class="custom-file">
-						<input type="file" class="custom-file-input" name="surat-permohonan-ke-proyek" id="surat-permohonan-ke-proyek" onchange="showSelectedFile('#surat-permohonan-ke-proyek-label', event)" accept="application/pdf" disabled="disabled">
-						<label class="custom-file-label text-left" for="surat-permohonan-ke-proyek" id="surat-permohonan-ke-proyek-label">Pilih File</label>
-					</div>
+					Belum diunggah
 				@endif
 			</td>
-			@if ($disposisi->progress == 5)
-				<td class="text-center align-middle">
-					@csrf
-					<button type="submit" class="btn btn-sm btn-success">Kirim</button>
-				</td>
-			@elseif ($disposisi->progress < 5)
-				<td class="text-center align-middle">
-					<button class="btn btn-sm btn-secondary disabled">Kirim</button>
-				</td>
-			@endif
 		</tr>
 	</tbody>
 </table>

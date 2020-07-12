@@ -19,10 +19,10 @@
                 @if ($category == 'tamu')
                     <h3>Selamat Datang</h3>
                 	<h6>Informasi yang berkaitan dengan dosen dapat dilihat di menu <i>Dosen</i></h6>
-                @elseif (isset($role->mhs))
-                    <h3>Selamat Datang {{ $nama }}</h3>
-                	<h6>Informasi yang berkaitan dengan TGA dapat dilihat menu <i>TGA</i></h6>
                 @else
+                    <h3>Selamat Datang{{ isset($role->mhs) ? ' '.$nama : '' }}</h3>
+                	<h6>Informasi yang berkaitan dengan KP dapat dilihat menu <i>KP</i></h6>
+                {{--@else
                     <h5 class="mb-4">Daftar Proses Mahasiswa</h5>
                     @php
                         $tahap = [
@@ -216,7 +216,7 @@
                                 @endif
                             @endforeach
                         </tbody>
-                    </table>
+                    </table>--}}
                     {{--<h5 class="mt-4 mb-4">Daftar Proses Opsional Mahasiswa</h5>
                     <table class="table table-bordered table-striped" id="list-mahasiswa-optional">
                         <thead>
