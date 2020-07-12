@@ -26,6 +26,10 @@ class UserRolesTableSeeder extends Seeder
 
 		//KK Keahlian
         DB::table('user_roles')->insert([
+        	'user_id' => 1137,
+        	'role_id' => 3
+        ]);
+        DB::table('user_roles')->insert([
         	'user_id' => 1138,
         	'role_id' => 3
         ]);
@@ -39,10 +43,6 @@ class UserRolesTableSeeder extends Seeder
         ]);
         DB::table('user_roles')->insert([
         	'user_id' => 1141,
-        	'role_id' => 3
-        ]);
-        DB::table('user_roles')->insert([
-        	'user_id' => 1142,
         	'role_id' => 3
         ]);
 
