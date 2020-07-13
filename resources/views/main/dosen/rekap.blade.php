@@ -31,14 +31,9 @@
 	    					<th scope="col">No.</th>
 	    					<th scope="col">Dosen</th>
 	    					<th scope="col">NIP</th>
-	    					<th scope="col">Tgl Sidang</th>
 	    					<th scope="col">NIM</th>
 	    					<th scope="col">Pembimbing</th>
-	    					<th scope="col">Co. Pembimbing</th>
-	    					<th scope="col">Ketua Penguji</th>
-	    					<th scope="col">Penguji-1</th>
-	    					<th scope="col">Penguji-2</th>
-	    					<th scope="col">Penguji-3</th>
+	    					<th scope="col">Pembahas</th>
 	    					<th scope="col">Periode</th>
 	    				</tr>
 	    			</thead>
@@ -49,11 +44,6 @@
 								<td style="text-align: left;">{{ $dosen->nama }}</td>
 								<td>{{ $dosen->nomor_induk }}</td>
 								<td>-</td>
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
 								<td>0</td>
 								<td>0</td>
 								<td>0</td>

@@ -115,7 +115,7 @@ class User extends Model
                     foreach ($value as $value2) {
                         $mhs_id = $this->firstWhere('nama', $value2)->id;
 
-                        if ($this->find($mhs_id)->disposisi()->value('progress') > 35) {
+                        if ($this->find($mhs_id)->disposisi()->value('progress') > 22) {
                             $selesai_bimbingan[$index] = $selesai_bimbingan[$index]+1;
                         }
                     }
@@ -127,30 +127,30 @@ class User extends Model
         return false;
     }
 
-    public function dataCoBimbingan() {
+    public function dataPembahas() {
 
-        $co_bimbingan = [];
+        $pembahas = [];
 
         $semua_dosen = $this->where('category', 'dosen')->get();
 
         foreach ($semua_dosen as $dosen) {
-            $co_bimbingan[$dosen->nama] = [];
+            $pembahas[$dosen->nama] = [];
         }
 
-        if (Data::where('name', 'co-pembimbing')->exists()) {
+        if (Data::where('name', 'pembahas')->exists()) {
 
-            $x = Data::where('name', 'co-pembimbing')->get();
+            $x = Data::where('name', 'pembahas')->get();
             foreach ($x as $y) {
-                array_push($co_bimbingan[$y->content], $y->user->nama);
+                array_push($pembahas[$y->content], $y->user->nama);
             }
         }
 
-        return $co_bimbingan;
+        return $pembahas;
     }
 
-    public function calculateCoBimbingan($to_calculate) {
+    public function calculatePembahas($to_calculate) {
 
-        $bimbingan = $this->dataCoBimbingan();
+        $bimbingan = $this->dataPembahas();
         if ($to_calculate == 'total') {
 
             $total_bimbingan = [];
@@ -171,7 +171,7 @@ class User extends Model
                     foreach ($value as $value2) {
                         $mhs_id = $this->firstWhere('nama', $value2)->id;
 
-                        if ($this->find($mhs_id)->disposisi()->value('progress') > 35) {
+                        if ($this->find($mhs_id)->disposisi()->value('progress') > 22) {
                             $selesai_bimbingan[$index] = $selesai_bimbingan[$index]+1;
                         }
                     }
@@ -180,6 +180,36 @@ class User extends Model
             return $selesai_bimbingan;
 
         }
+        return false;
+    }
+
+    public function dataDosenWali () {
+        $dosen_wali = [];
+
+        $semua_dosen = $this->where('category', 'dosen')->get();
+
+        foreach ($semua_dosen as $dosen) {
+            $dosen_wali[$dosen->nama] = [];
+        }
+
+        if (Data::where('name', 'dosen-wali')->exists()) {
+
+            $x = Data::where('name', 'dosen-wali')->get();
+            foreach ($x as $y) {
+                array_push($dosen_wali[$y->content], $y->user->nama);
+            }
+        }
+
+        return $dosen_wali;
+    }
+
+    public function calculateDosenWali () {
+        $bimbingan = $this->dataDosenWali();
+            $dosen_wali = [];
+            foreach ($bimbingan as $index => $value) {
+                $dosen_wali[$index] = count($value);
+            }
+            return $dosen_wali;
         return false;
     }
 

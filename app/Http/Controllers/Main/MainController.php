@@ -69,10 +69,11 @@ class MainController extends Controller
                     'total' => $user->calculateBimbingan('total'),
                     'selesai' => $user->calculateBimbingan('selesai')
                 ],
-                'co_bimbingan' => [
-                    'total' => $user->calculateCoBimbingan('total'),
-                    'selesai' => $user->calculateCoBimbingan('selesai')
-                ]
+                'pembahas' => [
+                    'total' => $user->calculatePembahas('total'),
+                    'selesai' => $user->calculatePembahas('selesai')
+                ],
+                'dosen_wali' => $user->calculateDosenWali()
             ]
         ]);
     }

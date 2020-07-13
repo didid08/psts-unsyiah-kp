@@ -27,13 +27,6 @@
 	    		</style>
 	    		<table class="table table-bordered table-striped" id="info-dosen">
 	    			<thead>
-	    				<!--<tr>
-	    					<th scope="col" colspan="4">DOSEN</th>
-	    					<th scope="col" colspan="3">PEMBIMBING</th>
-	    					<th scope="col" colspan="3">CO PEMBIMBING</th>
-	    					<th scope="col" colspan="3">PENGUJI</th>
-	    					<th scope="col" colspan="2"></th>
-	    				</tr>-->
 	    				<tr>
 	    					<th scope="col">NO</th>
 	    					<th scope="col">NAMA</th>
@@ -42,13 +35,9 @@
 	    					<th scope="col">Bimbing</th>
 	    					<th scope="col">Selesai Bimb</th>
 	    					<th scope="col">Total Pemb.</th>
-	    					<th scope="col">Co Pemb</th>
-	    					<th scope="col">Selesai Co Pemb</th>
-	    					<th scope="col">Total Co Pemb.</th>
-	    					<th scope="col">Ketua Penguji</th>
-	    					<th scope="col">Penguji Sidang</th>
-	    					<th scope="col">Total Penguji</th>
-	    					<th scope="col">Penguji Proposal</th>
+	    					<th scope="col">Pembahas</th>
+	    					<th scope="col">Selesai Pembahas</th>
+	    					<th scope="col">Total pembahas</th>
 	    					<th scope="col">Dosen Wali</th>
 	    				</tr>
 	    			</thead>
@@ -68,14 +57,10 @@
 								<td>{{ $data['bimbingan']['total'][$dosen->nama] }}</td>
 								<td>{{ $data['bimbingan']['selesai'][$dosen->nama] }}</td>
 								<td>{{ $data['bimbingan']['total'][$dosen->nama] - $data['bimbingan']['selesai'][$dosen->nama] }}</td>
-								<td>{{ $data['co_bimbingan']['total'][$dosen->nama] }}</td>
-								<td>{{ $data['co_bimbingan']['selesai'][$dosen->nama] }}</td>
-								<td>{{ $data['co_bimbingan']['total'][$dosen->nama] - $data['co_bimbingan']['selesai'][$dosen->nama] }}</td>
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
+								<td>{{ $data['pembahas']['total'][$dosen->nama] }}</td>
+								<td>{{ $data['pembahas']['selesai'][$dosen->nama] }}</td>
+								<td>{{ $data['pembahas']['total'][$dosen->nama] - $data['pembahas']['selesai'][$dosen->nama] }}</td>
+								<td>{{ $data['dosen_wali'][$dosen->nama] }}</td>
 							</tr>
 	    				@endforeach
 	    			</tbody>
