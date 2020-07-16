@@ -29,22 +29,6 @@ class PengisianRekapNilaiKPController extends MainController
         ]);
     }
 
-    /*public function isiRekapNilaiKP($nim, Request $request)
-    {
-    	$user = User::where(['category' => 'mahasiswa', 'nomor_induk' => $nim]);
-        if (!$user->exists()) {
-            return abort(404);
-        }
-
-        $disposisi = Disposisi::where(['user_id' => $user->first()->id]);
-        if ($disposisi->first()->progress != 18) {
-        	return abort(404);
-        }
-    	return $this->customView('kp.koor-prodi.rekap-nilai-kp', [
-        	'mahasiswa' => $user->first()
-        ]);
-    }*/
-
     public function cetakRekapNilaiKP ($nim)
     {
         $user = User::where(['category' => 'mahasiswa', 'nomor_induk' => $nim]);
@@ -72,10 +56,8 @@ class PengisianRekapNilaiKPController extends MainController
 
         $pdf = PDF::loadView('main.kp.koor-prodi.rekap-nilai-kp', [
             'mahasiswa' => $user->first()
-        ])->setPaper('a4');
+        ]);
         return $pdf->stream($nim.'-rekap-nilai-kp.pdf');
-
-        return abort(404);
     }
 
     public function process($nim, Request $request)

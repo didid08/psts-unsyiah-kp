@@ -1,7 +1,6 @@
 <table width="110%" class="table table-bordered{{ formBackground(11, 12, $disposisi) }}">
 	<tbody>
 		<tr>
-			<td class="text-center align-middle">5.</td>
 			<td class="align-middle font-weight-bold">SK Penunjukan Pembimbing & Pembahas KP</td>
 			<td class="align-middle text-center">
 				@if ($disposisi->progress > 12)
@@ -10,8 +9,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td class="align-middle"></td>
-			<td class="align-middle font-italic">No</td>
+			<td class="align-middle">No</td>
 			<td class="text-center align-middle">
 				@if (in_array($disposisi->progress, range(11,12)))
 					<span class="text-warning">sedang diproses</span>
@@ -23,8 +21,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td class="align-middle"></td>
-			<td class="align-middle font-italic">Tgl</td>
+			<td class="align-middle">Tgl</td>
 			<td class="text-center align-middle">
 				@if (in_array($disposisi->progress, range(11,12)))
 					<span class="text-warning">sedang diproses</span>

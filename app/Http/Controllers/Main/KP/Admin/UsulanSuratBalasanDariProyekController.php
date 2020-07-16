@@ -22,7 +22,7 @@ class UsulanSuratBalasanDariProyekController extends MainController
             'nav_item_active' => 'kp',
             'subtitle' => 'Usulan Surat Balasan Dari Proyek',
 
-            'semua_mahasiswa' => Disposisi::where('progress', 12)->orderBy('updated_at')->get(),
+            'semua_mahasiswa' => Disposisi::where('progress', 7)->orderBy('updated_at')->get(),
             'surat_balasan_dari_proyek' => $data->getDataMultiple('surat-balasan-dari-proyek')
         ]);
     }
@@ -40,7 +40,7 @@ class UsulanSuratBalasanDariProyekController extends MainController
     	{
     		case 'decline':
     			$disposisi->update([
-	                'progress' => 11
+	                'progress' => 6
 	            ]);
 	            return redirect()->back()->with('error', 'Usulan telah ditolak');
     		break;
@@ -52,8 +52,7 @@ class UsulanSuratBalasanDariProyekController extends MainController
                 ]);
 
 	            $disposisi->update([
-                    'progress' => 13,
-                    'progress_optional' => 1
+                    'progress' => 8
                 ]);
 
                 return redirect()->back()->with('success', 'Usulan telah diterima');

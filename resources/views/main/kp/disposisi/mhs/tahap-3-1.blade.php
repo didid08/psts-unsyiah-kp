@@ -47,7 +47,7 @@
 			<td class="align-middle">Nama Proyek</td>
 			<td class="text-center align-middle">
 				@if ($disposisi->progress >= 8)
-					<textarea class="form-control bg-light" readonly="readonly">{{ $data->judul_kp->content }}</textarea>
+					<textarea class="form-control bg-light" readonly="readonly">{{ $data->nama_proyek->content }}</textarea>
 				@else
 					--
 				@endif

@@ -59,12 +59,14 @@ class UploadDisposisiController extends Controller
     	} else {
             if ($progress == 4) {
                 $validate_rules = [
-                    'surat-permohonan-ke-proyek' => 'required|file|mimes:pdf|max:5120'
+                    'nama-direktur-perusahaan' => 'required',
+                    'nama-bapak-ibu-pada-tujuan-surat' => 'required',
+                    'alamat-proyek' => 'required',
+                    'nama-proyek' => 'required',
+                    'kp-selama' => 'required'
                 ];
                 $validate_errors = [
-                    'surat-permohonan-ke-proyek.required' => 'Harap unggah Surat Permohonan ke Proyek',
-                    'surat-permohonan-ke-proyek.mimes' => 'Harap unggah dalam format pdf',
-                    'surat-permohonan-ke-proyek.max' => 'Ukuran Surat Permohonan ke Proyek melebihi 5 MB'
+                    'required' => 'Harap Lengkapi Data'
                 ];
 
                 $validator = Validator::make($request->all(), $validate_rules, $validate_errors);
@@ -72,27 +74,40 @@ class UploadDisposisiController extends Controller
                     return redirect()->back()->withErrors($validator);
                 }
 
-                $filename = User::myData('nomor_induk').'-surat-permohonan-ke-proyek.'.$request->file('surat-permohonan-ke-proyek')->extension();
+                foreach ($validate_rules as $index => $value) {
+                    Data::updateOrCreate([
+                        'user_id' => User::myData('id'),
+                        'category' => 'data_surat_permohonan_ke_proyek',
+                        'type' => 'text',
+                        'name' => $index,
+                        'display_name' => str_replace('Bapak Ibu', 'Bapak/Ibu', ucwords(str_replace('-', ' ', $index)))
+                    ], [
+                        'content' => $request->input($index),
+                        'verified' => false
+                    ]);
+                }
 
-                $request->file('surat-permohonan-ke-proyek')->storeAs(
-                    'data', $filename
-                );
+                if (Data::where(['user_id' => User::myData('id'), 'name' => 'no-surat-permohonan-ke-proyek'])->get()->count() == 0) {
+                    $jumlahYgAdaNomor = Data::where('name', 'no-surat-permohonan-ke-proyek')->get()->count();
+                    $no = $jumlahYgAdaNomor+1;
 
-                Data::updateOrCreate([
-                    'user_id' => User::myData('id'),
-                    'category' => 'data_usul',
-                    'type' => 'file',
-                    'name' => 'surat-permohonan-ke-proyek',
-                    'display_name' => 'Surat Permohonan ke Proyek'
-                ], [
-                    'content' => $filename
-                ]);
+                    Data::updateOrCreate([
+                        'user_id' => User::myData('id'),
+                        'category' => 'data_surat_permohonan_ke_proyek',
+                        'type' => 'text',
+                        'name' => 'no-surat-permohonan-ke-proyek',
+                        'display_name' => 'Nomor Surat Permohonan Ke Proyek'
+                    ], [
+                        'content' => 'B/'.$no.'/UN11.1.4/1/KM/'.date('Y'),
+                        'verified' => false
+                    ]);
+                }
 
                 $disposisi->update([
                     'progress' => 5
                 ]);
 
-                return redirect()->back()->with('success', 'Berhasil mengunggah surat permohonan ke proyek');
+                return redirect()->back()->with('success', 'Surat Permohonan ke Proyek telah diproses dan dikirim ke Admin');
             } elseif ($progress == 6) {
                 $validate_rules = [
                     'surat-balasan-dari-proyek' => 'required|file|mimes:pdf|max:5120'
@@ -129,6 +144,50 @@ class UploadDisposisiController extends Controller
                 ]);
 
                 return redirect()->back()->with('success', 'Berhasil mengunggah Surat Balasan Dari Proyek');
+            } elseif ($progress == 9) {
+                $validate_rules = [
+                    'pembimbing-lapangan-kp' => 'required'
+                ];
+                $validate_errors = [
+                    'required' => 'Harap Lengkapi Data'
+                ];
+
+                $validator = Validator::make($request->all(), $validate_rules, $validate_errors);
+                if ($validator->fails()) {
+                    return redirect()->back()->withErrors($validator);
+                }
+                Data::updateOrCreate([
+                    'user_id' => User::myData('id'),
+                    'category' => 'data_surat_ke_proyek',
+                    'type' => 'text',
+                    'name' => 'pembimbing-lapangan-kp',
+                    'display_name' => 'Pembimbing Lapangan KP'
+                ], [
+                    'content' => $request->input('pembimbing-lapangan-kp'),
+                    'verified' => false
+                ]);
+
+                if (Data::where(['user_id' => User::myData('id'), 'name' => 'no-surat-ke-proyek'])->get()->count() == 0) {
+                    $jumlahYgAdaNomor = Data::where('name', 'no-surat-ke-proyek')->get()->count();
+                    $no = $jumlahYgAdaNomor+1;
+
+                    Data::updateOrCreate([
+                        'user_id' => User::myData('id'),
+                        'category' => 'data_surat_ke_proyek',
+                        'type' => 'text',
+                        'name' => 'no-surat-ke-proyek',
+                        'display_name' => 'Nomor Surat Ke Proyek'
+                    ], [
+                        'content' => 'B/'.$no.'/UN11.1.4/1/KM/'.date('Y'),
+                        'verified' => false
+                    ]);
+                }
+
+                $disposisi->update([
+                    'progress' => 10
+                ]);
+
+                return redirect()->back()->with('success', 'Surat Ke Proyek telah diproses dan dikirim ke Admin');
             } elseif ($progress == 14) {
                 $validate_rules = [
                     'masa-kerja-praktek-1' => 'required',

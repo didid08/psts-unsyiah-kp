@@ -15,6 +15,7 @@
 			@else
 			padding:0 7em;
 			@endif
+			font-size: 0.95em;
 		}
 		#nilai-kerja-praktek {
 			border-collapse: collapse;
@@ -29,9 +30,30 @@
 			width: 10em;
 		}
 	</style>
+	@if (isset($cetak))
+		<table style="margin-left: -5em; margin-right: -5em; margin-bottom: 1em; border-collapse: collapse; border-bottom: 4px solid black;" width="100%">
+			<tr>
+				<td style="vertical-align: middle; width: 5%; padding-bottom: 1.5em;">
+					<img src="{{ public_path('dist/img/logo-unsyiah-3.png') }}" alt="Logo Unsyiah" width="130em">		
+				</td>
+				<td style="vertical-align: middle; text-align: center; line-height: 1.3em;">
+					<div style="font-size: 1.2em;">
+						KEMENTERIAN RISET, TEKNOLOGI DAN PENDIDIKAN TINGGI <br>
+						UNIVERSITAS SYIAH KUALA <br>
+						FAKULTAS TEKNIK <br>
+						<span style="font-weight: bold;">JURUSAN TEKNIK SIPIL</span>
+					</div>
+					<div style="font-size: 0.95em; padding-bottom: 0.3em;">
+						Jalan Tengku Syech Abdur Rauf No.7, Darussalam, Banda Aceh 23111 <br>
+						Telepon (0651) 755444 <br>
+						Website/domain: sipil.unsyiah.ac.id; e-mail: tekniksipil{!! '@' !!}unsyiah.ac.id
+					</div>
+				</td>
+			</tr>
+		</table>
+	@endif
 	<h5>NILAI KERJA PRAKTEK<br><br>DARI PEMBIMBING</h5>
-	<br><br>
-	<div style="text-align: left; margin-bottom: 5em;">
+	<div style="text-align: left; margin-bottom: 2em;">
 		<h5>Data Kerja Praktek</h5>
 		<table width="100%">
 			<tr>
@@ -139,7 +161,7 @@
 		<b>NIP. {{ \App\User::firstWhere('nama', $mahasiswa->data->firstWhere('name', 'pembimbing')->content)->nomor_induk }}</b>
 	</div>
 
-	<div style="text-align: left; margin-bottom: 2em; margin-top: 15em;">
+	<div style="text-align: left; margin-bottom: 2em; margin-top: 13em;">
 		*) Nilai yang diberikan berupa huruf: <br>
 		A = 87 - 100, AB = 78 - 86, B = 69 - 77, BC = 60 - 68, C = 51 - 59, D = 41 - 50
 	</div>

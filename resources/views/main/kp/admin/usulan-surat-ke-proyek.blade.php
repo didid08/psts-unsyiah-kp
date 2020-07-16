@@ -17,7 +17,7 @@
 							<th scope="col" class="align-middle text-left">Nama</th>
 							<th scope="col" class="align-middle text-center">NIM</th>
 							<th scope="col" class="align-middle text-center">Surat Ke Proyek</th>
-							<th scope="col" class="align-middle text-center">Opsi</th>
+							<th scope="col" class="align-middle text-center">Sudah Dto Koor Prodi</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -36,11 +36,11 @@
 									<td class="align-middle text-left">{{ $mahasiswa->user->nama }}</td>
 									<td class="align-middle text-center">{{ $mahasiswa->user->nomor_induk }}</td>
 									<td class="align-middle text-center">
-										<input type="file" name="surat-ke-proyek" accept="application/pdf">
+										<a target="_blank" class="btn btn-sm btn-outline-secondary" href="{{ route('main.kp.admin.cetak.surat-ke-proyek', ['nim' => $mahasiswa->user->nomor_induk]) }}"><i class="fa fa-download mr-2"></i>Unduh</a>
 									</td>
 									<td class="align-middle text-center">
 										@csrf
-										<button type="submit" class="btn btn-sm btn-success">Kirim ke Koor Prodi</button>
+										<button type="submit" class="btn btn-sm btn-success">Ya</button>
 									</td>
 								</form>
 							</tr>

@@ -188,13 +188,12 @@
 									@include('main.kp.disposisi.'.$folder.'.tahap-3-2')
 								</td>
 								<td class="text-center align-middle">
-								</td>
-								<td class="text-center align-middle">
 									{!! progress(9, $disposisi) !!}
 								</td>
 								<td class="text-center align-middle">
 									{!! progress(10, $disposisi) !!}
 								</td>
+								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>

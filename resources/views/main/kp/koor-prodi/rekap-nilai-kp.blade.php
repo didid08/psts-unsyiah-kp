@@ -17,6 +17,26 @@
 		width: 10em;
 	}
 </style>
+<table style="margin-left: -5em; margin-right: -5em; margin-bottom: 1em; border-collapse: collapse; border-bottom: 4px solid black;" width="100%">
+	<tr>
+		<td style="vertical-align: middle; width: 5%; padding-bottom: 1.5em;">
+			<img src="{{ public_path('dist/img/logo-unsyiah-3.png') }}" alt="Logo Unsyiah" width="130em">		
+		</td>
+		<td style="vertical-align: middle; text-align: center; line-height: 1.3em;">
+			<div style="font-size: 1.2em;">
+				KEMENTERIAN RISET, TEKNOLOGI DAN PENDIDIKAN TINGGI <br>
+				UNIVERSITAS SYIAH KUALA <br>
+				FAKULTAS TEKNIK <br>
+				<span style="font-weight: bold;">JURUSAN TEKNIK SIPIL</span>
+			</div>
+			<div style="font-size: 0.95em; padding-bottom: 0.3em;">
+				Jalan Tengku Syech Abdur Rauf No.7, Darussalam, Banda Aceh 23111 <br>
+				Telepon (0651) 755444 <br>
+				Website/domain: sipil.unsyiah.ac.id; e-mail: tekniksipil{!! '@' !!}unsyiah.ac.id
+			</div>
+		</td>
+	</tr>
+</table>
 <h5>REKAPITULASI<br><br>NILAI KERJA PRAKTEK</h5>
 <div style="text-align: left;">
 	<h5>Data Kerja Praktek</h5>

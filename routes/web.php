@@ -62,7 +62,7 @@ Route::middleware(['auth'])->group(function () {
 			Route::post('/main/kp/admin/usulan-kp/process/{nim}/{opsi}', 'Main\KP\Admin\UsulanKPController@process')->name('main.kp.admin.usulan-kp.process');
 
 			Route::get('/main/kp/admin/usulan-surat-permohonan-ke-proyek', 'Main\KP\Admin\UsulanSuratPermohonanKeProyekController@view')->name('main.kp.admin.usulan-surat-permohonan-ke-proyek');
-			Route::post('/main/kp/admin/usulan-surat-permohonan-ke-proyek/process/{nim}/{opsi}', 'Main\KP\Admin\UsulanSuratPermohonanKeProyekController@process')->name('main.kp.admin.usulan-surat-permohonan-ke-proyek.process');
+			Route::post('/main/kp/admin/usulan-surat-permohonan-ke-proyek/process/{nim}', 'Main\KP\Admin\UsulanSuratPermohonanKeProyekController@process')->name('main.kp.admin.usulan-surat-permohonan-ke-proyek.process');
 
 			Route::get('/main/kp/admin/usulan-surat-ke-proyek', 'Main\KP\Admin\UsulanSuratKeProyekController@view')->name('main.kp.admin.usulan-surat-ke-proyek');
 			Route::post('/main/kp/admin/usulan-surat-ke-proyek/process/{nim}', 'Main\KP\Admin\UsulanSuratKeProyekController@process')->name('main.kp.admin.usulan-surat-ke-proyek.process');
@@ -84,6 +84,9 @@ Route::middleware(['auth'])->group(function () {
 
 			Route::get('/main/kp/admin/usulan-kelengkapan-dokumen-administrasi', 'Main\KP\Admin\UsulanKelengkapanDokumenAdministrasiController@view')->name('main.kp.admin.usulan-kelengkapan-dokumen-administrasi');
 			Route::post('/main/kp/admin/usulan-kelengkapan-dokumen-administrasi/process/{nim}/{opsi}', 'Main\KP\Admin\UsulanKelengkapanDokumenAdministrasiController@process')->name('main.kp.admin.usulan-kelengkapan-dokumen-administrasi.process');
+
+			Route::get('/main/kp/cetak/surat-permohonan-ke-proyek/{nim}', 'Main\KP\Admin\UsulanSuratPermohonanKeProyekController@cetak')->name('main.kp.admin.cetak.surat-permohonan-ke-proyek');
+			Route::get('/main/kp/cetak/surat-ke-proyek/{nim}', 'Main\KP\Admin\UsulanSuratKeProyekController@cetak')->name('main.kp.admin.cetak.surat-ke-proyek');
 		});
 
 		//Koor Prodi
@@ -106,7 +109,7 @@ Route::middleware(['auth'])->group(function () {
 			Route::get('/main/kp/koor-prodi/persetujuan-usulan-kelengkapan-dokumen-administrasi', 'Main\KP\KoorProdi\PersetujuanUsulanKelengkapanDokumenAdministrasiController@view')->name('main.kp.koor-prodi.persetujuan-usulan-kelengkapan-dokumen-administrasi');
 			Route::post('/main/kp/koor-prodi/persetujuan-usulan-kelengkapan-dokumen-administrasi/process/{nim}/{opsi}', 'Main\KP\KoorProdi\PersetujuanUsulanKelengkapanDokumenAdministrasiController@process')->name('main.kp.koor-prodi.persetujuan-usulan-kelengkapan-dokumen-administrasi.process');
 		});
-		Route::get('/main/kp/cetak-rekap-nilai-kp/{nim}', 'Main\KP\KoorProdi\PengisianRekapNilaiKPController@cetakRekapNilaiKP')->name('main.kp.cetak-rekap-nilai-kp');
+		Route::get('/main/kp/cetak/rekap-nilai-kp/{nim}', 'Main\KP\KoorProdi\PengisianRekapNilaiKPController@cetakRekapNilaiKP')->name('main.kp.cetak-rekap-nilai-kp');
 
 		//Ketua Kel Keahlian
 		Route::middleware('only.ketua-kel-keahlian')->group(function () {
