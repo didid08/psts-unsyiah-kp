@@ -21,7 +21,7 @@ class UsulanSKPembimbingPembahasController extends MainController
             'nav_item_active' => 'kp',
             'subtitle' => 'Usulan SK Pembimbing & Pembahas',
 
-            'semua_mahasiswa' => Disposisi::where('progress', 9)->orderBy('updated_at')->get(),
+            'semua_mahasiswa' => Disposisi::where('progress', 11)->orderBy('updated_at')->get(),
             'pembimbing' => $data->getDataMultiple('pembimbing'),
             'pembahas' => $data->getDataMultiple('pembahas')
         ]);
@@ -65,7 +65,7 @@ class UsulanSKPembimbingPembahasController extends MainController
 
         $disposisi = Disposisi::where(['user_id' => $user->first()->id]);
         $disposisi->update([
-            'progress' => 10
+            'progress' => 12
         ]);
 
         return redirect()->back()->with('success', 'Usulan telah dikirim ke Koor Prodi');

@@ -1,62 +1,32 @@
-<table width="100%" class="table table-bordered{{ formBackground(14, 15, $disposisi) }}">
+<table width="100%" class="table table-bordered{{ formBackground(17, 17, $disposisi) }}">
 	<tbody>
 		<tr>
-			<td class="align-middle">1.</td>
-			<td class="align-middle">Masa Kerja Praktek</td>
-			<td class="align-middle">
-				@if ($disposisi->progress == 14)
-					Belum diunggah
-				@elseif (in_array($disposisi->progress, range(15,15)))
-					<span class="text-yellow">Sedang diperiksa</span>
-				@elseif ($disposisi->progress > 15)
-					Tgl <u>{{ date('d/m/Y', strtotime($data->masa_kerja_praktek_1->content)) }}</u> s/d <u>{{ date('d/m/Y', strtotime($data->masa_kerja_praktek_2->content)) }}</u>
+			<td colspan="2" class="align-middle"><b>Laporan KP</b></td>
+		</tr>
+		<tr>
+			<td colspan="2" class="align-middle"><b>Pembahas memberi catatan KP dan nilai KP</b></td>
+		</tr>
+		<tr>
+			<td class="align-middle">Catatan KP</td>
+			<td class="align-middle text-center">
+				@if (in_array($disposisi->progress, range(17,17)))
+					<span class="text-yellow">Sedang diproses</span>
+				@elseif ($disposisi->progress > 17)
+					<input type="text" class="form-control bg-light" disabled="disabled" value="{{ isset($data->catatan_kp_pembahas) ? $data->catatan_kp_pembahas->content : '' }}" placeholder="Tidak ada catatan">
 				@else
-					Belum diunggah
+					--
 				@endif
 			</td>
 		</tr>
 		<tr>
-			<td class="align-middle">2.</td>
-			<td class="align-middle">Surat keterangan telah selesai KP dari penanggung jawab KP</td>
-			<td class="align-middle">
-				@if ($disposisi->progress == 14)
-					Belum diunggah
-				@elseif (in_array($disposisi->progress, range(15,15)))
-					<span class="text-yellow">Sedang diperiksa</span>
-				@elseif ($disposisi->progress > 15)
-					<i class="fa fa-check-circle text-green"></i><span class="ml-3">Ada</span>
+			<td class="align-middle">Nilai KP</td>
+			<td class="align-middle text-center">
+				@if (in_array($disposisi->progress, range(17,17)))
+					<span class="text-yellow">Sedang diproses</span>
+				@elseif ($disposisi->progress > 17)
+					<a href="{{ route('main.kp.cetak-nilai-kp-pembahas', ['nim' => $mahasiswa->nomor_induk]) }}" class="btn btn-sm btn-success">Lihat</a>
 				@else
-					Belum diunggah
-				@endif
-			</td>
-		</tr>
-		<tr>
-			<td class="align-middle text-center">3.</td>
-			<td class="align-middle">Buku Laporan KP</td>
-			<td class="align-middle">
-				@if ($disposisi->progress == 14)
-					Belum diunggah
-				@elseif (in_array($disposisi->progress, range(15,15)))
-					<span class="text-yellow">Sedang diperiksa</span>
-				@elseif ($disposisi->progress > 15)
-					<i class="fa fa-check-circle text-green"></i><span class="ml-3">Ada</span>
-				@else
-					Belum diunggah
-				@endif
-			</td>
-		</tr>
-		<tr>
-			<td class="align-middle text-center">4.</td>
-			<td class="align-middle">Lembar Pengesahan KP</td>
-			<td class="align-middle">
-				@if ($disposisi->progress == 14)
-					Belum diunggah
-				@elseif (in_array($disposisi->progress, range(15,15)))
-					<span class="text-yellow">Sedang diperiksa</span>
-				@elseif ($disposisi->progress > 15)
-					<i class="fa fa-check-circle text-green"></i><span class="ml-3">Ada</span>
-				@else
-					Belum diunggah
+					--
 				@endif
 			</td>
 		</tr>

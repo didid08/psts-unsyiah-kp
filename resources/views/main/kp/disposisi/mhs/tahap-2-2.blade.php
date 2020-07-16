@@ -1,43 +1,44 @@
-@if ($disposisi->progress == 5)
-	<form action="{{ route('main.kp.mahasiswa.upload-disposisi', ['progress' => 5]) }}" method="post" style="display: inline;" enctype="multipart/form-data">
+@if ($disposisi->progress == 6)
+	<form action="{{ route('main.kp.mahasiswa.upload-disposisi', ['progress' => 6]) }}" method="post" style="display: inline;" enctype="multipart/form-data">
 @endif
-<table width="100%" class="table table-bordered{{ formBackground(5, 6, $disposisi) }}">
+<table width="62%" class="table table-bordered{{ formBackground(6, 7, $disposisi) }}">
 	<tbody>
 		<tr>
-			<td colspan="{{ $disposisi->progress < 6 ? 3 : 2 }}" class="align-middle"><b>Pengajuan Surat Ke Proyek</b></td>
-		</tr>
-		<tr>
-			<td class="align-middle">Surat Permohonan Ke Proyek</td>
-			<td class="text-center align-middle">
-				@if ($disposisi->progress == 5)
+			<td class="align-middle font-weight-bold">Surat Balasan Dari Proyek</td>
+			<td class="align-middle text-center">
+				@if ($disposisi->progress == 6)
 					<div class="custom-file">
-						<input type="file" class="custom-file-input" name="surat-permohonan-ke-proyek" id="surat-permohonan-ke-proyek" onchange="showSelectedFile('#surat-permohonan-ke-proyek-label', event)" accept="application/pdf">
-						<label class="custom-file-label text-left" for="surat-permohonan-ke-proyek" id="surat-permohonan-ke-proyek-label">Pilih File</label>
+						<input type="file" class="custom-file-input" name="surat-balasan-dari-proyek" id="surat-balasan-dari-proyek" onchange="showSelectedFile('#surat-balasan-dari-proyek-label', event)" accept="application/pdf">
+						<label class="custom-file-label text-left" for="surat-balasan-dari-proyek" id="surat-balasan-dari-proyek-label">Pilih File</label>
 					</div>
-				@elseif (in_array($disposisi->progress, range(6,6)))
+				@elseif (in_array($disposisi->progress, range(7,7)))
 					<span class="text-warning">sedang diperiksa</span>
-				@elseif ($disposisi->progress > 6)
+				@elseif ($disposisi->progress > 7)
 					<i class="fa fa-check-circle text-green"></i><span class="ml-3">Ada</span>
 				@else
 					<div class="custom-file">
-						<input type="file" class="custom-file-input" name="surat-permohonan-ke-proyek" id="surat-permohonan-ke-proyek" onchange="showSelectedFile('#surat-permohonan-ke-proyek-label', event)" accept="application/pdf" disabled="disabled">
-						<label class="custom-file-label text-left" for="surat-permohonan-ke-proyek" id="surat-permohonan-ke-proyek-label">Pilih File</label>
+						<input type="file" class="custom-file-input" name="surat-balasan-dari-proyek" id="surat-balasan-dari-proyek" onchange="showSelectedFile('#surat-balasan-dari-proyek-label', event)" accept="application/pdf" disabled="disabled">
+						<label class="custom-file-label text-left" for="surat-balasan-dari-proyek" id="surat-balasan-dari-proyek-label">Pilih File</label>
 					</div>
 				@endif
 			</td>
-			@if ($disposisi->progress == 5)
-				<td class="text-center align-middle">
+		</tr>
+		@if ($disposisi->progress == 6)
+			<tr>
+				<td colspan="2" class="text-right align-middle">
 					@csrf
 					<button type="submit" class="btn btn-sm btn-success">Kirim</button>
 				</td>
-			@elseif ($disposisi->progress < 5)
-				<td class="text-center align-middle">
+			</tr>
+		@elseif ($disposisi->progress < 6)
+			<tr>
+				<td colspan="2" class="text-right align-middle">
 					<button class="btn btn-sm btn-secondary disabled">Kirim</button>
 				</td>
-			@endif
-		</tr>
+			</tr>
+		@endif
 	</tbody>
 </table>
-@if ($disposisi->progress == 5)
+@if ($disposisi->progress == 6)
 	</form>
 @endif

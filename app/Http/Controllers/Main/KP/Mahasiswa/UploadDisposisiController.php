@@ -57,7 +57,7 @@ class UploadDisposisiController extends Controller
                 return redirect()->back()->with('success', 'Berhasil mengunggah Surat Permohonan Tugas Pengambilan Data');
     		}
     	} else {
-            if ($progress == 5) {
+            if ($progress == 4) {
                 $validate_rules = [
                     'surat-permohonan-ke-proyek' => 'required|file|mimes:pdf|max:5120'
                 ];
@@ -89,11 +89,11 @@ class UploadDisposisiController extends Controller
                 ]);
 
                 $disposisi->update([
-                    'progress' => 6
+                    'progress' => 5
                 ]);
 
                 return redirect()->back()->with('success', 'Berhasil mengunggah surat permohonan ke proyek');
-            } elseif ($progress == 11) {
+            } elseif ($progress == 6) {
                 $validate_rules = [
                     'surat-balasan-dari-proyek' => 'required|file|mimes:pdf|max:5120'
                 ];
@@ -125,7 +125,7 @@ class UploadDisposisiController extends Controller
                 ]);
 
                 $disposisi->update([
-                    'progress' => 12
+                    'progress' => 7
                 ]);
 
                 return redirect()->back()->with('success', 'Berhasil mengunggah Surat Balasan Dari Proyek');

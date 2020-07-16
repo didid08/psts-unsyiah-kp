@@ -18,7 +18,7 @@ class PenetapanSKPembimbingPembahasController extends MainController
             'nav_item_active' => 'kp',
             'subtitle' => 'Penetapan SK Pembimbing & Pembahas',
 
-            'semua_mahasiswa' => Disposisi::where('progress', 10)->orderBy('updated_at')->get(),
+            'semua_mahasiswa' => Disposisi::where('progress', 12)->orderBy('updated_at')->get(),
             'pembimbing' => $data->getDataMultiple('pembimbing'),
             'pembahas' => $data->getDataMultiple('pembahas'),
             'sk_pembimbing_pembahas' => $data->getDataMultiple('sk-pembimbing-pembahas')
@@ -38,7 +38,7 @@ class PenetapanSKPembimbingPembahasController extends MainController
         {
             case 'decline':
                 $disposisi->update([
-                    'progress' => 9
+                    'progress' => 11
                 ]);
                 return redirect()->back()->with('error', 'Usulan telah ditolak');
             break;
@@ -60,7 +60,7 @@ class PenetapanSKPembimbingPembahasController extends MainController
                 ]);
 
                 $disposisi->update([
-                    'progress' => 11
+                    'progress' => 13
                 ]);
 
                 return redirect()->back()->with('success', 'SK Penunjukan Pembimbing & Pembahas telah ditetapkan');

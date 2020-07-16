@@ -22,7 +22,7 @@ class UsulanSuratKeProyekController extends MainController
             'nav_item_active' => 'kp',
             'subtitle' => 'Usulan Surat Ke Proyek',
 
-            'semua_mahasiswa' => Disposisi::where('progress', 7)->orderBy('updated_at')->get()
+            'semua_mahasiswa' => Disposisi::where('progress', 9)->orderBy('updated_at')->get()
         ]);
     }
 
@@ -69,7 +69,7 @@ class UsulanSuratKeProyekController extends MainController
         ]);
 
         $disposisi->update([
-            'progress' => 8
+            'progress' => 10
         ]);
 
         return redirect()->back()->with('success', 'Usulan telah dikirim ke Koor Prodi');

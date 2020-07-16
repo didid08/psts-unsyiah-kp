@@ -4,7 +4,7 @@
 			<td colspan="3" class="align-middle"><b>Pemeriksaan Pembimbing & Pembahas terhadap mahasiswa</b></td>
 		</tr>
 		<tr>
-			<td class="align-middle">a.</td>
+			<td class="align-middle">1.</td>
 			<td class="align-middle">Pembimbing dan Pembahas telah menerima SK</td>
 			<td class="align-middle text-center">
 				@if (isset($data->pemeriksaan_berkas_kp_1))
@@ -19,7 +19,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td class="align-middle">b.</td>
+			<td class="align-middle">2.</td>
 			<td class="align-middle">Mahasiswa mendapatkan persetujuan pembimbing untuk kelapangan</td>
 			<td class="align-middle text-center">
 				@if (isset($data->pemeriksaan_berkas_kp_2))
@@ -34,7 +34,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td class="align-middle">c.</td>
+			<td class="align-middle">3.</td>
 			<td class="align-middle">Melaporkan kegiatan menggunakan lembar asistensi panduan kp mengacu pada website : <a target="_blank" href="http://sipil.unsyiah.ac.id/download/">http://sipil.unsyiah.ac.id/download/</a></td>
 			<td class="align-middle text-center">
 				@if (isset($data->pemeriksaan_berkas_kp_3))

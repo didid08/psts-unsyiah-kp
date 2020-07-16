@@ -22,7 +22,7 @@ class PenetapanSuratKeProyekController extends MainController
             'nav_item_active' => 'kp',
             'subtitle' => 'Penetapan Surat Ke Proyek',
 
-            'semua_mahasiswa' => Disposisi::where('progress', 8)->orderBy('updated_at')->get(),
+            'semua_mahasiswa' => Disposisi::where('progress', 10)->orderBy('updated_at')->get(),
             'surat_ke_proyek' => $data->getDataMultiple('surat-ke-proyek'),
         ]);
     }
@@ -39,7 +39,7 @@ class PenetapanSuratKeProyekController extends MainController
     	if ($opsi == 'decline')
     	{
     		$disposisi->update([
-                'progress' => 7
+                'progress' => 9
             ]);
             return redirect()->back()->with('error', 'Usulan telah ditolak');
     	}
@@ -60,7 +60,7 @@ class PenetapanSuratKeProyekController extends MainController
 	        ]);
 
 	        $disposisi->update([
-	            'progress' => 9
+	            'progress' => 11
 	        ]);
 
 	        return redirect()->back()->with('success', 'Surat ke Proyek telah ditetapkan');

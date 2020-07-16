@@ -1,11 +1,11 @@
-<table width="90%" class="table table-bordered{{ formBackground(9, 10, $disposisi) }}">
+<table width="100%" class="table table-bordered{{ formBackground(9, 10, $disposisi) }}">
 	<tbody>
 		<tr>
-			<td class="text-center align-middle">2.</td>
-			<td class="align-middle font-weight-bold">SK Penunjukan Pembimbing & Pembahas KP</td>
+			<td class="text-center align-middle">4.</td>
+			<td class="align-middle font-weight-bold">Surat Ke Proyek</td>
 			<td class="align-middle text-center">
 				@if ($disposisi->progress > 10)
-					<a href="{{ route('main.file', ['filename' => $data->sk_pembimbing_pembahas->content]) }}" class="btn btn-sm btn-success">Unduh</a>
+					<a href="{{ route('main.file', ['filename' => $data->surat_ke_proyek->content]) }}" class="btn btn-sm btn-success">Unduh</a>
 				@endif
 			</td>
 		</tr>
@@ -16,7 +16,7 @@
 				@if (in_array($disposisi->progress, range(9,10)))
 					<span class="text-warning">sedang diproses</span>
 				@elseif ($disposisi->progress > 10)
-					<input type="text" class="form-control bg-light" readonly="readonly" value="{{ $data->sk_pembimbing_pembahas->no }}">
+					<input type="text" class="form-control bg-light" readonly="readonly" value="{{ $data->surat_ke_proyek->no }}">
 				@else
 					--
 				@endif
@@ -29,7 +29,7 @@
 				@if (in_array($disposisi->progress, range(9,10)))
 					<span class="text-warning">sedang diproses</span>
 				@elseif ($disposisi->progress > 10)
-					<input type="text" class="form-control bg-light" readonly="readonly" value="{{ date('d-m-Y', strtotime($data->sk_pembimbing_pembahas->tgl)) }}">
+					<input type="text" class="form-control bg-light" readonly="readonly" value="{{ date('d-m-Y', strtotime($data->surat_ke_proyek->tgl)) }}">
 				@else
 					--
 				@endif

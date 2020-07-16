@@ -52,7 +52,7 @@ class PengusulanPembimbingPembahasController extends MainController
             'semua_mahasiswa' => Data::where(['name' => 'bidang', 'content' => $myBidang])
             						->join('disposisi', 'data.user_id', '=', 'disposisi.user_id')
             						->select('disposisi.*')
-            						->where('progress', 4)
+            						->where('progress', 8)
             						->orderBy('updated_at')
             						->get(),
             'semua_dosen' => User::where('category', 'dosen')->get(),
@@ -134,7 +134,7 @@ class PengusulanPembimbingPembahasController extends MainController
         $disposisi = Disposisi::where(['user_id' => $user->first()->id]);
 
         $disposisi->update([
-            'progress' => 5
+            'progress' => 9
         ]);
 
         return redirect()->back()->with('success', 'Pembimbing dan Pembahas telah ditetapkan');
