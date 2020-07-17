@@ -106,18 +106,11 @@
 							</tr>
 						</thead>
 						<tbody>
-							@php
-								if (isset($role->mhs)) {
-									$folder = 'mhs';
-								} else {
-									$folder = 'read-only';
-								}
-							@endphp
 							{{-- Tahap 1 --}}
 							<tr class="{{ background(1, 3, $disposisi) }}">
 								<td><b>1</b></td>
 								<td colspan="4">
-									@include('main.kp.disposisi.'.$folder.'.tahap-1')
+									@include('main.kp.disposisi.tahap-1')
 								</td>
 								<td class="text-center align-middle">
 									{!! progress(1, $disposisi) !!}
@@ -137,7 +130,7 @@
 							<tr class="{{ background(4, 5, $disposisi) }}">
 								<td><b>2</b></td>
 								<td colspan="4">
-									@include('main.kp.disposisi.'.$folder.'.tahap-2-1')
+									@include('main.kp.disposisi.tahap-2-1')
 								</td>
 								<td class="text-center align-middle">
 									{!! progress(4, $disposisi) !!}
@@ -153,7 +146,7 @@
 							<tr class="{{ background(6, 7, $disposisi) }}">
 								<td></td>
 								<td colspan="4">
-									@include('main.kp.disposisi.'.$folder.'.tahap-2-2')
+									@include('main.kp.disposisi.tahap-2-2')
 								</td>
 								<td class="text-center align-middle">
 									{!! progress(6, $disposisi) !!}
@@ -171,7 +164,7 @@
 							<tr class="{{ background(8, 8, $disposisi) }}">
 								<td><b>3</b></td>
 								<td colspan="4">
-									@include('main.kp.disposisi.'.$folder.'.tahap-3-1')
+									@include('main.kp.disposisi.tahap-3-1')
 								</td>
 								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>
@@ -185,7 +178,7 @@
 							<tr class="{{ background(9, 10, $disposisi) }}">
 								<td></td>
 								<td colspan="4">
-									@include('main.kp.disposisi.'.$folder.'.tahap-3-2')
+									@include('main.kp.disposisi.tahap-3-2')
 								</td>
 								<td class="text-center align-middle">
 									{!! progress(9, $disposisi) !!}
@@ -201,7 +194,7 @@
 							<tr class="{{ background(11, 12, $disposisi) }}">
 								<td></td>
 								<td colspan="4">
-									@include('main.kp.disposisi.'.$folder.'.tahap-3-3')
+									@include('main.kp.disposisi.tahap-3-3')
 								</td>
 								<td class="text-center align-middle">
 								</td>
@@ -220,7 +213,7 @@
 							<tr class="{{ background(13, 13, $disposisi) }}">
 								<td><b>4</b></td>
 								<td colspan="4">
-									@include('main.kp.disposisi.'.$folder.'.tahap-4')
+									@include('main.kp.disposisi.tahap-4-1')
 								</td>
 								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>
@@ -234,7 +227,7 @@
 							<tr class="{{ background(14, 15, $disposisi) }}">
 								<td></td>
 								<td colspan="4">
-									@include('main.kp.disposisi.'.$folder.'.tahap-4-2')
+									@include('main.kp.disposisi.tahap-4-2')
 								</td>
 								<td class="text-center align-middle">
 									{!! progress(14, $disposisi) !!}
@@ -250,7 +243,7 @@
 							<tr class="{{ background(16, 16, $disposisi) }}">
 								<td></td>
 								<td colspan="4">
-									@include('main.kp.disposisi.'.$folder.'.tahap-4-3')
+									@include('main.kp.disposisi.tahap-4-3')
 								</td>
 								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>
@@ -266,7 +259,7 @@
 							<tr class="{{ background(17, 17, $disposisi) }}">
 								<td><b>5</b></td>
 								<td colspan="4">
-									@include('main.kp.disposisi.'.$folder.'.tahap-5')
+									@include('main.kp.disposisi.tahap-5')
 								</td>
 								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>
@@ -282,7 +275,7 @@
 							<tr class="{{ background(18, 18, $disposisi) }}">
 								<td><b>6</b></td>
 								<td colspan="4">
-									@include('main.kp.disposisi.'.$folder.'.tahap-6')
+									@include('main.kp.disposisi.tahap-6')
 								</td>
 								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>
@@ -298,7 +291,7 @@
 							{{--<tr class="{{ background(19, 19, $disposisi) }}">
 								<td><b>9</b></td>
 								<td colspan="4">
-									@include('main.kp.disposisi.'.$folder.'.tahap-9')
+									@include('main.kp.disposisi.tahap-9')
 								</td>
 								<td class="text-center align-middle"></td>
 								<td class="text-center align-middle"></td>
@@ -314,7 +307,7 @@
 							{{--<tr class="{{ background(20, 22, $disposisi) }}">
 								<td><b>10</b></td>
 								<td colspan="4">
-									@include('main.kp.disposisi.'.$folder.'.tahap-10')
+									@include('main.kp.disposisi.tahap-10')
 								</td>
 								<td class="text-center align-middle">
 									{!! progress(20, $disposisi) !!}

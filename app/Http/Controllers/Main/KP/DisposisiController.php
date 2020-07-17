@@ -52,30 +52,12 @@ class DisposisiController extends MainController
                 }
 
                 $mhs_id = User::firstWhere('nomor_induk', $nim)->id;
-                /*$disposisi = new Disposisi;
-                if (!$disposisi->isEligibleToView($mhs_id, User::myData('id'))) {
-                    return redirect()->back()->with('error', 'Anda tidak memiliki perizinan untuk melihat disposisi mahasiswa yang anda pilih');
-                }*/
 
                 $user_role = new UserRole ();
                 $my_roles = $user_role->myRoles();
 
                 $data = new Data ();
                 $user = new User;
-                $daftar_bimbingan = $user->calculateBimbingan('total');
-                $daftar_co_bimbingan = $user->calculateCoBimbingan('total');
-                $semua_dosen_bimbingan = [];
-                $semua_dosen_co_bimbingan = [];
-                foreach (User::dataWithCategory('dosen') as $x) {
-                    if ($daftar_bimbingan[$x->nama] < 10) {
-                        array_push($semua_dosen_bimbingan, $x);
-                    }
-                }
-                foreach (User::dataWithCategory('dosen') as $x) {
-                    if ($daftar_co_bimbingan[$x->nama] < 10) {
-                        array_push($semua_dosen_co_bimbingan, $x);
-                    }
-                }
 
                 $extra_data = [
                     'mahasiswa' => User::firstWhere('nomor_induk', $nim),

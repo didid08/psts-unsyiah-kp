@@ -1,5 +1,12 @@
 <table width="100%" class="table table-bordered{{ formBackground(1, 3, $disposisi) }}">
 	<tbody>
+		@if (isset($role->mhs))
+		<tr>
+			<td colspan="3" class="align-middle text-left">
+				<a href="{{ route('main.kp.mahasiswa.input-usul') }}" class="btn btn-light">Input Usul KP</a>
+			</td>
+		</tr>
+		@endif
 		<tr>
 			<td class="align-middle text-center">1.</td>
 			<td class="align-middle">SPP</td>
