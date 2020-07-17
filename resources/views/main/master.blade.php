@@ -59,16 +59,15 @@
                   <li><a href="{{ route('main.kp.disposisi') }}" class="dropdown-item">Disposisi</a></li>
                   @if (isset($role->mhs))
                     <li><a href="{{ route('main.kp.mahasiswa.input-usul') }}" class="dropdown-item">Input Usul KP</a></li>
-                    
                   @endif
                   @if (isset($role->admin))
+                    <li><a href="{{ route('main.kp.admin.info-rekap-nilai-kp') }}" class="dropdown-item">Info Rekap Nilai KP</a></li>
                     <li><a href="{{ route('main.kp.admin.usulan-kp') }}" class="dropdown-item">1. Usulan KP</a></li>
                     <li><a href="{{ route('main.kp.admin.usulan-surat-permohonan-ke-proyek') }}" class="dropdown-item">2. Usulan Surat Permohonan Ke Proyek</a></li>
                     <li><a href="{{ route('main.kp.admin.usulan-surat-balasan-dari-proyek') }}" class="dropdown-item">3. Usulan Surat Balasan Dari Proyek</a></li>
                     <li><a href="{{ route('main.kp.admin.usulan-surat-ke-proyek') }}" class="dropdown-item">4. Usulan Surat Ke Proyek</a></li>
                     <li><a href="{{ route('main.kp.admin.usulan-sk-pembimbing-pembahas') }}" class="dropdown-item">5. Usulan SK Pembimbing/Pembahas</a></li>
                     <li><a href="{{ route('main.kp.admin.usulan-pengisian-masa-kp') }}" class="dropdown-item">6. Usulan Pengisian Masa KP</a></li>
-                    <li><a href="{{ route('main.kp.admin.usulan-kelengkapan-dokumen-administrasi') }}" class="dropdown-item">7. Usulan Kelengkapan Dokumen Administrasi</a></li>
                   @endif
                   @if (isset($role->koor_prodi))
                     <li><a href="{{ route('main.kp.koor-prodi.persetujuan-usulan-kp') }}" class="dropdown-item">1. Persetujuan Usulan KP</a></li>
@@ -102,6 +101,9 @@
             <ul class="dropdown-menu border-0 shadow">
               <li><a href="{{ route('main.dosen.info') }}" class="dropdown-item">Info Dosen</a></li>
               <li><a href="{{ route('main.dosen.rekap') }}" class="dropdown-item">Rekap Dosen</a></li>
+              @if (!isset($role->mhs))
+                <li><a href="{{ route('main.dosen.info-mahasiswa') }}" class="dropdown-item">Info Mahasiswa KP</a></li>
+              @endif
             </ul>
           </li>
 

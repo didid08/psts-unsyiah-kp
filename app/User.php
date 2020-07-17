@@ -115,7 +115,7 @@ class User extends Model
                     foreach ($value as $value2) {
                         $mhs_id = $this->firstWhere('nama', $value2)->id;
 
-                        if ($this->find($mhs_id)->disposisi()->value('progress') > 22) {
+                        if ($this->find($mhs_id)->disposisi()->value('progress') > 18) {
                             $selesai_bimbingan[$index] = $selesai_bimbingan[$index]+1;
                         }
                     }
@@ -171,7 +171,7 @@ class User extends Model
                     foreach ($value as $value2) {
                         $mhs_id = $this->firstWhere('nama', $value2)->id;
 
-                        if ($this->find($mhs_id)->disposisi()->value('progress') > 22) {
+                        if ($this->find($mhs_id)->disposisi()->value('progress') > 18) {
                             $selesai_bimbingan[$index] = $selesai_bimbingan[$index]+1;
                         }
                     }

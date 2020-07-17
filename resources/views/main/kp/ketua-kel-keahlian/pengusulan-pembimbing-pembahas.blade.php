@@ -44,6 +44,7 @@
 										<td class="align-middle text-center">
 											@csrf
 											<select name="pembimbing" id="" class="form-control">
+												<option selected disabled>Pilih Pembimbing</option>
 												@foreach ($semua_dosen as $dosen)
 													<option value="{{ $dosen->nomor_induk }}">{{ $dosen->nama }}</option>
 												@endforeach
@@ -51,6 +52,7 @@
 										</td>
 										<td class="align-middle text-center">
 											<select name="pembahas" id="" class="form-control">
+												<option selected disabled>Pilih Pembahas</option>
 												@foreach ($semua_dosen as $dosen)
 													<option value="{{ $dosen->nomor_induk }}">{{ $dosen->nama }}</option>
 												@endforeach

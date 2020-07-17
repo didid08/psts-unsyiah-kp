@@ -86,4 +86,18 @@ class MainController extends Controller
             'semua_dosen' => User::dataWithCategory('dosen')
         ]);
     }
+
+    public function infoMahasiswa()
+    {
+        return $this->customView('dosen.info-mahasiswa', [
+            'nav_item_active' => 'dosen',
+            'subtitle' => 'Info Mahasiswa KP',
+            'semua_mahasiswa' => User::where('category', 'mahasiswa')
+                                    ->orderBy('nomor_induk', 'DESC')
+                                    ->join('disposisi', 'disposisi.user_id', '=', 'users.id')
+                                    ->where('disposisi.progress', '>', 8)
+                                    ->select('users.*')
+                                    ->get()
+        ]);
+    }
 }

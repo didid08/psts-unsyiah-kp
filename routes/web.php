@@ -39,9 +39,10 @@ Route::middleware(['auth'])->group(function () {
 	
 	Route::get('/main/dosen/info', 'Main\MainController@infoDosen')->name('main.dosen.info');
 	Route::get('/main/dosen/rekap', 'Main\MainController@rekapDosen')->name('main.dosen.rekap');
+	Route::get('/main/dosen/info-mahasiswa', 'Main\MainController@infoMahasiswa')->name('main.dosen.info-mahasiswa');
 
 	Route::get('/main/file/{filename}', 'Main\FileGetController')->name('main.file');
-		//TGA
+		//KP
 		Route::get('/main/kp/disposisi/{nim?}', 'Main\KP\DisposisiController@view')->middleware('prevent.guest')->name('main.kp.disposisi');
 		Route::get('/main/kp/disposisi/{nim}/cetak', 'Main\KP\DisposisiController@print')->middleware('prevent.guest')->name('main.kp.disposisi.cetak');
 
@@ -58,6 +59,8 @@ Route::middleware(['auth'])->group(function () {
 		
 		//Admin
 		Route::middleware('only.admin')->group(function () {
+			Route::get('/main/kp/admin/info-rekap-nilai-kp/{opsi?}', 'Main\KP\Admin\InfoRekapNilaiKPController')->name('main.kp.admin.info-rekap-nilai-kp');
+
 			Route::get('/main/kp/admin/usulan-kp', 'Main\KP\Admin\UsulanKPController@view')->name('main.kp.admin.usulan-kp');
 			Route::post('/main/kp/admin/usulan-kp/process/{nim}/{opsi}', 'Main\KP\Admin\UsulanKPController@process')->name('main.kp.admin.usulan-kp.process');
 
