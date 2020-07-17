@@ -101,7 +101,7 @@
 		<td>
 			<div>1. Nama Pembimbing</div>
 			<div style="padding: 0.1em 0.8em;">
-				@if ($disposisi->progress > 4)
+				@if ($disposisi->progress > 8)
 					<i>{{ $data->pembimbing->content }}</i>
 				@else
 					&nbsp;
@@ -109,7 +109,7 @@
 			</div>
 			<div>2. Nama Pembahas</div>
 			<div style="padding: 0.1em 0.8em;">
-				@if ($disposisi->progress > 4)
+				@if ($disposisi->progress > 8)
 					<i>{{ $data->pembahas->content }}</i>
 				@else
 					&nbsp;
@@ -117,7 +117,7 @@
 			</div>
 			<div>Nama Proyek</div>
 			<div style="padding: 0.1em 0.8em;">
-				@if ($disposisi->progress > 4)
+				@if ($disposisi->progress > 8)
 					<i>{{ $data->judul_kp->content }}</i>
 				@else
 					&nbsp;
@@ -127,7 +127,7 @@
 		<td>
 			<div>Diusulkan oleh</div>
 			<div style="padding: 0.5em;">
-				@if ($disposisi->progress > 4)
+				@if ($disposisi->progress > 8)
 					dto
 				@else
 					&nbsp;
@@ -142,19 +142,19 @@
 		<td>3</td>
 		<td>Prodi S1</td>
 		<td>
-			<div>1. Surat Ke Proyek <span style="float: right;"><input type="checkbox" {{ $disposisi->progress > 7 ? 'checked' : '' }}></span></div>
+			<div>1. Surat Ke Proyek <span style="float: right;"><input type="checkbox" {{ $disposisi->progress > 10 ? 'checked' : '' }}></span></div>
 			<div style="padding: 0.1em 0.8em;">
-				@if ($disposisi->progress > 8)
+				@if ($disposisi->progress > 10)
 					No. {{ $data->surat_ke_proyek->no }}
-					<span style="float: right;">Tgl. {{ date('d/m/Y', strtotime($data->surat_ke_proyek->tgl)) }} </span>
+					<span style="float: right;">Tgl.</span>
 				@else
 					No.
 					<span style="float: right;">Tgl.</span>
 				@endif
 			</div>
-			<div>2. SK Pembimbing dan Pembahas KP <span style="float: right;"><input type="checkbox" {{ $disposisi->progress > 9 ? 'checked' : '' }}></span></div>
+			<div>2. SK Pembimbing dan Pembahas KP <span style="float: right;"><input type="checkbox" {{ $disposisi->progress > 12 ? 'checked' : '' }}></span></div>
 			<div style="padding: 0.1em 0.8em;">
-				@if ($disposisi->progress > 10)
+				@if ($disposisi->progress > 12)
 					No. {{ $data->sk_pembimbing_pembahas->no }}
 					<span style="float: right;">Tgl. {{ date('d/m/Y', strtotime($data->sk_pembimbing_pembahas->tgl)) }} </span>
 				@else
@@ -166,7 +166,7 @@
 		<td>
 			<div>Ditetapkan oleh</div>
 			<div style="padding: 0.5em;">
-				@if ($disposisi->progress > 10)
+				@if ($disposisi->progress > 12)
 					dto
 				@else
 					&nbsp;
@@ -353,7 +353,7 @@
 		<td>
 			<div>Diterima oleh</div>
 			<div style="padding: 0.5em;">
-				@if ($disposisi->progress > 19)
+				@if ($disposisi->progress > 18)
 					dto
 				@else
 					&nbsp;
@@ -369,13 +369,13 @@
 		<td>Administrasi</td>
 		<td>
 			<div>
-				1. Kelengkapan dokumen administrasi (Dokumen: PSTS-2) <span style="float: right;"><input type="checkbox" {{ $disposisi->progress > 21 ? 'checked' : '' }}></span>
+				1. Kelengkapan dokumen administrasi (Dokumen: PSTS-2) <span style="float: right;"><input type="checkbox" {{ $disposisi->progress > 18 ? 'checked' : '' }}></span>
 			</div>
 			<div>
-				2. Softcopy dokumen administrasi <span style="float: right;"><input type="checkbox" {{ $disposisi->progress > 21 ? 'checked' : '' }}></span>
+				2. Softcopy dokumen administrasi <span style="float: right;"><input type="checkbox" {{ $disposisi->progress > 18 ? 'checked' : '' }}></span>
 			</div>
 			<div style="margin-left: 1em;">
-				nama file: Nim_KP.zip <span style="float: right;"><input type="checkbox" {{ $disposisi->progress > 21 ? 'checked' : '' }}></span>
+				nama file: Nim_KP.zip <span style="float: right;"><input type="checkbox" {{ $disposisi->progress > 18 ? 'checked' : '' }}></span>
 			</div>
 			<div style="margin-left: 1em;">
 				email administrasi:  jtspsts{!! '@' !!}gmail.com
@@ -384,7 +384,7 @@
 		<td>
 			<div>Diperiksa oleh</div>
 			<div style="padding: 0.5em;">
-				@if ($disposisi->progress > 21)
+				@if ($disposisi->progress > 18)
 					dto
 				@else
 					&nbsp;
@@ -400,7 +400,7 @@
 <div>
 	<div style="float:right; text-align: left; font-size: 0.8em;">
 		Koordinator Program Studi
-		@if ($disposisi->progress > 22)
+		@if ($disposisi->progress > 18)
 			<div style="margin: 0.5em; margin-left: 3em; font-weight: bold;">dto</div>
 		@else
 			<br><br><br>
